@@ -1,0 +1,28 @@
+.wrap {
+    display: block;
+    padding-top: calculateRem(204px);
+
+    @include tablet {
+        padding-top: calculateRem(40px);
+    }
+
+    @include mobile {
+        padding-top: calculateRem(24px);
+    }
+
+    @at-root .page-main & {
+        padding-top: 0;
+
+        @include min-desktop {
+            margin-bottom: calculateRem(-40px);
+        }
+
+        @include from-to($desktop, $tablet) {
+            margin-bottom: calculateRem(-30px);
+        }
+
+        @include tablet {
+            margin-bottom: calculateRem(-80px);
+        }
+    }
+}

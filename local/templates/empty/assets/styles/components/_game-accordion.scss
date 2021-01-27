@@ -1,0 +1,109 @@
+.game-accordion {
+    display: block;
+
+    @at-root #{&}__ticket {
+        @include container;
+    }
+
+    @at-root #{&}__roll {
+        display: block;
+        max-height: 0;
+        background-color: $color-white;
+        width: 100%;
+        transition: max-height 0.4s cubic-bezier(0, 0, .2, 1);
+        overflow: hidden;
+        margin-top: calculateRem(-28px);
+    }
+
+    @at-root #{&}__content {
+        @include container;
+
+        font-size: 0;
+        padding-top: calculateRem(44px);
+        margin-bottom: calculateRem(16px);
+    }
+
+    @at-root #{&}__desc {
+        display: block;
+        font-size: calculateRem(20px);
+        line-height: calculateRem(28px);
+        font-weight: 600;
+        margin-bottom: calculateRem(16px);
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-bottom: calculateRem(12px);
+        }
+    }
+
+    @at-root #{&}__access {
+        position: relative;
+        display: block;
+        font-size: calculateRem(20px);
+        line-height: calculateRem(28px);
+        font-weight: 800;
+        margin-bottom: calculateRem(24px);
+        padding-left: calculateRem(24px);
+
+        &:before {
+            position: absolute;
+            display: block;
+            width: calculateRem(10px);
+            height: calculateRem(12px);
+            top: calculateRem(8px);
+            left: 0;
+            background: url('../../images/icons/icon-event-acces.svg') no-repeat center center;
+            background-size: contain;
+            content: '';
+
+            @include mobile {
+                top: calculateRem(6px);
+            }
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            padding-left: calculateRem(20px);
+            margin-bottom: calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__bottom {
+        position: relative;
+        display: block;
+        background-color: $color-dark-purple;
+
+        &:before {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: calculateRem(28px);
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: $color-white;
+            content: '';
+        }
+    }
+
+    @at-root #{&}__map {
+        @include container;
+
+        position: relative;
+        display: block;
+        height: calculateRem(320px);
+
+        @include mobile {
+            height: calculateRem(288px);
+        }
+
+        @at-root #{&} iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+}

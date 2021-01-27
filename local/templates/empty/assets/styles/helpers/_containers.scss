@@ -1,0 +1,49 @@
+// Container
+$container-max: 2560px;
+$container: 1920px;
+$container-base: 1232px;
+$container-desktop-md: 1092px;
+$container-desktop-sm: 972px;
+$container-desktop-xs: 820px;
+$container-tablet: 632px;
+$container-mobile: 572px;
+$gutter-width: 16px; // 32px (16px on each side of a container)
+
+@mixin container {
+    width: 100%;
+    padding-left: $gutter-width;
+    padding-right: $gutter-width;
+
+    @include min-desktop-medium {
+        max-width: $container-base;
+    }
+
+    @include desktop-medium-only {
+        max-width: $container-desktop-md;
+    }
+
+    @include desktop-only {
+        max-width: $container-desktop-sm;
+    }
+
+    @include desktop-small-only {
+        max-width: $container-desktop-xs;
+    }
+
+    @include tablet-only {
+        max-width: $container-tablet;
+    }
+
+    @include tablet-small-only {
+        max-width: $container-mobile;
+    }
+
+    @include mobile {
+        max-width: none;
+    }
+
+    @include min-mobile {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,89 @@
+.slider-tabs {
+    $root: &;
+
+    position: relative;
+    display: block;
+
+    @at-root #{&}__init {
+        display: block;
+        padding-top: calculateRem(24px);
+        padding-bottom: calculateRem(24px);
+        margin-left: calculateRem(-12px);
+        margin-right: calculateRem(-12px);
+        overflow: hidden;
+    }
+
+    #{$root}__init:not([data-tab-slider]) .swiper-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    @at-root #{&}__tab {
+        display: block;
+        padding-left: calculateRem(12px);
+        padding-right: calculateRem(12px);
+        height: auto;
+
+        #{$root}__init:not([data-tab-slider]) & {
+            @include min-desktop-medium {
+                flex: 1 1 33.3333%;
+                max-width: 33.3333%;
+            }
+
+            @include from-to($desktop-medium, $tablet) {
+                flex: 1 1 50%;
+                max-width: 50%;
+            }
+        }
+    }
+
+    @at-root #{&}__arrow {
+        position: absolute;
+        width: calculateRem(32px);
+        height: calculateRem(32px);
+        border: 0;
+        padding: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        cursor: pointer;
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: calculateRem(20px);
+            height: calculateRem(32px);
+            background-size: contain;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #{$root}__init:not([data-tab-slider]) ~ & {
+            display: none;
+        }
+
+        @include min-desktop-medium {
+            display: none;
+        }
+
+        @include from-to($desktop-medium, $tablet) {
+            display: inline-block;
+        }
+
+        @at-root #{&}--left {
+            left: calculateRem(-40px);
+            background: url('../../images/icons/icon-tab-arrow-left.svg') no-repeat center center;
+        }
+
+        @at-root #{&}--right {
+            right: calculateRem(-40px);
+            background: url('../../images/icons/icon-tab-arrow-right.svg') no-repeat center center;
+        }
+
+        @at-root #{&}--disable {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+}

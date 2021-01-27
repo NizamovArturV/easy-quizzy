@@ -1,0 +1,87 @@
+.dropdown-cities {
+    $root: &;
+
+    display: block;
+
+    @at-root #{&}__button {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        border: 0;
+        padding: 0 calculateRem(46px) 0 calculateRem(24px);
+        font-size: calculateRem(16px);
+        height: calculateRem(50px);
+        line-height: calculateRem(50px);
+        background-color: transparent;
+        color: $color-white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: color 0.2s ease-out, background-color 0.2s ease-out;
+
+        &:hover {
+            color: rgba($color-white, 0.8);
+        }
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: calculateRem(10px);
+            height: calculateRem(10px);
+            right: calculateRem(24px);
+            top: calc(50% - #{calculateRem(5px)});
+            background: url('../../images/icons/icon-dropdown-arrow-white.svg') no-repeat center center;
+            background-size: contain;
+            content: '';
+            transition: transform 0.2s ease-out;
+        }
+
+        #{$root}--active & {
+            background-color: $color-purple;
+
+            &:hover {
+                color: $color-white;
+            }
+
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @at-root #{&}__roll {
+        position: absolute;
+        display: none;
+        background-color: $color-purple;
+        padding: calculateRem(20px) calculateRem(24px);
+
+        & > :last-child {
+            margin-right: 0;
+        }
+
+        #{$root}--active & {
+            display: flex;
+        }
+    }
+
+    @at-root #{&}__list {
+        display: block;
+        margin-right: calculateRem(56px);
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @at-root #{&}__item {
+        display: block;
+        margin-bottom: calculateRem(10px);
+    }
+
+    @at-root #{&}__link {
+        display: inline-block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(24px);
+        color: $color-white;
+        font-weight: 700;
+    }
+}

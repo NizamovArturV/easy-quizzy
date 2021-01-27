@@ -1,0 +1,262 @@
+.slider-gallery {
+    position: relative;
+    display: block;
+
+    @include min-tablet {
+
+        background-color: $color-purple;
+
+        &:before,
+        &:after {
+            position: absolute;
+            display: block;
+            width: 100%;
+            content: '';
+            border-radius: 2px;
+            z-index: -1;
+            background-color: $color-pink;
+        }
+
+        &:before {
+            top: calculateRem(16px);
+            right: calculateRem(-16px);
+            opacity: 0.8;
+            height: calc(100% - #{calculateRem(16px)});
+        }
+
+        &:after {
+            top: calculateRem(32px);
+            right: calculateRem(-32px);
+            opacity: 0.7;
+            height: calc(100% - #{calculateRem(48px)});
+        }
+    }
+
+    @at-root #{&}__slide {
+        position: relative;
+        display: block;
+        width: 100%;
+        opacity: 0 !important;
+
+        @at-root #{&}.swiper-slide-active {
+            opacity: 1 !important;
+        }
+    }
+
+    @at-root #{&}__image {
+        @include backgroundImage;
+
+        display: block;
+        width: 100%;
+        padding-bottom: 67%;
+        border-radius: 2px;
+    }
+
+    @at-root #{&}__info {
+        display: block;
+        left: calculateRem(-40px);
+        bottom: calculateRem(-80px);
+
+        @include desktop {
+            bottom: calculateRem(-60px);
+        }
+
+        @include min-tablet {
+            position: absolute;
+            max-width: calculateRem(512px);
+            width: 100%;
+        }
+
+        @include tablet {
+            left: auto;
+            top: auto;
+            padding-right: calculateRem(80px);
+            margin-top: calculateRem(-32px);
+        }
+
+        @include mobile {
+            padding-right: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__desc {
+        display: block;
+        width: 100%;
+        padding: calculateRem(40px) calculateRem(60px);
+        background-color: $color-purple;
+        color: $color-white;
+        margin-bottom: calculateRem(16px);
+
+        @include tablet {
+            padding: calculateRem(24px) calculateRem(32px);
+        }
+    }
+
+    @at-root #{&}__title {
+        display: block;
+        font-size: calculateRem(32px);
+        line-height: calculateRem(40px);
+        font-weight: 800;
+        margin-bottom: calculateRem(16px);
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            margin-bottom: calculateRem(12px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-bottom: calculateRem(8px);
+        }
+    }
+
+    @at-root #{&}__date {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        color: rgba($color-white, 0.75);
+
+        @include tablet {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(14px);
+            line-height: calculateRem(22px);
+        }
+    }
+
+    @at-root #{&}__arrow {
+        @include transition-background-color;
+
+        position: absolute;
+        display: inline-block;
+        width: calculateRem(100px);
+        height: calculateRem(80px);
+        line-height: calculateRem(80px);
+        background-color: #21272A;
+        border: 0;
+        padding: 0;
+        z-index: 1;
+        bottom: calculateRem(-40px);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-black-base;
+        }
+
+        &:after {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: calculateRem(12px);
+            height: calculateRem(12px);
+            border-style: solid;
+            border-color: $color-white;
+            content: "";
+
+            @include tablet {
+                width: calculateRem(10px);
+                height: calculateRem(10px);
+            }
+
+            @include mobile {
+                width: calculateRem(8px);
+                height: calculateRem(8px);
+            }
+        }
+
+        @include desktop {
+            width: calculateRem(80px);
+            height: calculateRem(60px);
+            line-height: calculateRem(60px);
+            bottom: calculateRem(-30px);
+        }
+
+        @include tablet {
+            width: calculateRem(52px);
+            height: calculateRem(40px);
+            line-height: calculateRem(40px);
+            bottom: auto;
+            top: 0;
+            margin-top: calc(34% - #{calculateRem(20px)});
+        }
+
+        @include mobile {
+            width: calculateRem(40px);
+            height: calculateRem(32px);
+            line-height: calculateRem(32px);
+            margin-top: calc(34% - #{calculateRem(16px)});
+        }
+
+        @at-root #{&}--prev {
+            right: calculateRem(108px);
+
+            &:after {
+                border-width: 0 0 2px 2px;
+            }
+
+            @include desktop {
+                right: calculateRem(88px);
+            }
+
+            @include tablet {
+                right: auto;
+                left: calculateRem(-26px);
+            }
+
+            @include tablet-small {
+                left: 0;
+            }
+        }
+
+        @at-root #{&}--next {
+            right: 0;
+
+            &:after {
+                border-width: 2px 2px 0 0;
+            }
+
+            @include tablet {
+                right: calculateRem(-26px);
+            }
+
+            @include tablet-small {
+                right: 0;
+            }
+        }
+    }
+
+    @at-root #{&}__detail {
+        display: block;
+        font-size: 0;
+
+        @include min-tablet {
+            text-align: right;
+        }
+    }
+
+    @at-root #{&}__caption {
+        display: inline-block;
+        font-size: calculateRem(14px);
+        line-height: calculateRem(24px);
+        font-weight: 600;
+        color: rgba($color-white, 0.7);
+        margin-right: calculateRem(10px);
+    }
+
+    @at-root #{&}__link {
+        display: inline-block;
+        padding: 0 calculateRem(12px);
+        font-size: calculateRem(14px);
+        line-height: calculateRem(24px);
+        font-weight: 800;
+        background-color: #265B8A;
+        color: $color-white;
+    }
+}

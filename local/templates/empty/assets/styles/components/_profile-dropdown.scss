@@ -1,0 +1,96 @@
+.profile-dropdown {
+    $root: &;
+
+    position: relative;
+    min-width: calculateRem(160px);
+    display: flex;
+    align-items: center;
+    height: calculateRem(50px);
+    cursor: pointer;
+
+    @at-root #{&}__avatar {
+        display: block;
+        width: calculateRem(30px);
+        height: calculateRem(30px);
+        background-image: url('../../images/icons/icon-header-user.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-radius: 50%;
+        margin-right: calculateRem(16px);
+        flex-shrink: 0;
+    }
+
+    @at-root #{&}__button {
+        position: relative;
+        display: block;
+        height: 100%;
+        text-align: left;
+        flex: 1 1 auto;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(50px);
+        padding: 0 calculateRem(32px) 0 0;
+        color: $color-white;
+        font-weight: 700;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+        flex-shrink: 0;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: calculateRem(10px);
+            height: calculateRem(10px);
+            right: calculateRem(12px);
+            top: calc(50% - #{calculateRem(5px)});
+            background: url('../../images/icons/icon-dropdown-arrow-white.svg') no-repeat center center;
+            background-size: contain;
+            content: '';
+            transition: transform 0.2s ease-out;
+        }
+
+        #{$root}--show & {
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    @at-root #{&}__list {
+        display: none;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        #{$root}--show & {
+            position: absolute;
+            display: block;
+            width: calc(100% - #{calculateRem(16px)});
+            top: calculateRem(50px);
+            left: calculateRem(16px);
+            padding: calculateRem(16px) calculateRem(32px);
+            background-color: $color-black-base;
+        }
+    }
+
+    @at-root #{&}__link {
+        @include transition-color;
+
+        display: block;
+        color: $color-white;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(22px);
+        font-weight: 700;
+        margin-bottom: calculateRem(12px);
+
+        &:hover {
+            color: $color-yellow;
+        }
+    }
+}

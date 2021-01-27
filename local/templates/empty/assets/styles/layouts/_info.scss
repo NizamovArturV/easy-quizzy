@@ -1,0 +1,262 @@
+.info {
+    $root: &;
+
+    position: relative;
+    display: block;
+    background-color: $color-dark-purple;
+
+    @at-root #{&}__inner {
+        @include container;
+
+        position: relative;
+        z-index: 1;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @at-root #{&}__top {
+        display: block;
+        padding-top: calculateRem(100px);
+        margin-bottom: calculateRem(60px);
+
+        @include tablet {
+            padding-top: calculateRem(40px);
+            margin-bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            padding-top: calculateRem(24px);
+            margin-bottom: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__block {
+        display: block;
+        margin-bottom: calculateRem(80px);
+
+        @include desktop-small {
+            margin-bottom: calculateRem(64px);
+        }
+
+        @include tablet {
+            margin-bottom: calculateRem(40px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__title {
+        display: block;
+        color: $color-white;
+        margin-bottom: calculateRem(60px);
+
+        @include tablet {
+            margin-bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(16px);
+        }
+
+        #{$root}__question & {
+            text-align: center;
+
+            @include min-desktop-small {
+                padding-right: calculateRem(456px);
+            }
+        }
+
+        #{$root}__gallery & {
+            text-align: center;
+        }
+    }
+
+    @at-root #{&}__media {
+        display: block;
+    }
+
+    @at-root #{&}__video {
+        max-width: calculateRem(740px);
+    }
+
+    @at-root #{&}__overlay {
+        display: block;
+    }
+
+    @at-root #{&}__frame {
+        max-width: calculateRem(740px);
+
+        #{$root}__media & {
+            margin-left: auto;
+
+            @include min-desktop-medium {
+                margin-top: calculateRem(-132px);
+            }
+
+            @include desktop-medium-only {
+                margin-top: calculateRem(-112px);
+            }
+
+            @include desktop-only {
+                margin-top: calculateRem(-80px);
+            }
+
+            @include desktop-small-only {
+                margin-top: calculateRem(-48px);
+            }
+        }
+
+        #{$root}__question & {
+            @include min-desktop-small {
+                margin-right: calculateRem(72px);
+            }
+
+            @include desktop-small-only {
+                margin-right: calculateRem(40px);
+            }
+
+            @include mobile {
+                margin-bottom: calculateRem(16px);
+            }
+        }
+    }
+
+    @at-root #{&}__circle {
+        position: absolute;
+        display: inline-block;
+        font-size: 0;
+        right: calculateRem(40px);
+        top: calculateRem(-156px);
+        z-index: 1;
+
+        @include tablet {
+            top: calculateRem(-112px);
+        }
+
+        @include mobile {
+            top: calculateRem(-96px);
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    @at-root #{&}__overlay {
+        #{$root}__media & {
+            @include min-mobile {
+                padding-bottom: calculateRem(32px);
+            }
+
+            @include mobile {
+                padding-bottom: calculateRem(12px);
+                padding-right: calculateRem(16px);
+            }
+        }
+
+        #{$root}__question & {
+            @include min-mobile {
+                padding-bottom: calculateRem(32px);
+            }
+
+            @include mobile {
+                padding-bottom: calculateRem(12px);
+                padding-left: calculateRem(16px);
+            }
+        }
+    }
+
+    @at-root #{&}__preview {
+        @include tablet {
+            @include push--auto;
+        }
+
+        @include tablet-only {
+            margin-top: calculateRem(-64px);
+        }
+
+        @include tablet-small-only {
+            margin-top: calculateRem(-48px);
+        }
+    }
+
+    @at-root #{&}__image {
+        @include backgroundImage;
+
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    @at-root #{&}__wrap {
+        margin-bottom: calculateRem(32px);
+
+        @include min-tablet {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__answer {
+        display: block;
+        text-align: center;
+
+        @include min-desktop-small {
+            padding-right: calculateRem(456px);
+        }
+    }
+
+    @at-root #{&}__text {
+        #{$root}__answer & {
+            display: none;
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            font-weight: 700;
+            color: $color-white;
+
+            @include mobile {
+                font-size: calculateRem(16px);
+                line-height: calculateRem(24px);
+            }
+        }
+
+        #{$root}__answer#{$root}__answer--show & {
+            display: block;
+        }
+    }
+
+    @at-root #{&}__button {
+        #{$root}__answer--show & {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__slider {
+        @include push--auto;
+
+        display: block;
+        max-width: calculateRem(996px);
+        width: 100%;
+    }
+
+    @at-root #{&}__shapes {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+    }
+}

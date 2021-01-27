@@ -1,0 +1,73 @@
+.video {
+    @include backgroundImage;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:before {
+        position: absolute;
+        display: block;
+        width: calculateRem(100px);
+        height: calculateRem(100px);
+        background-color: $color-yellow;
+        content: '';
+        border-radius: 50%;
+
+        @include tablet {
+            width: calculateRem(64px);
+            height: calculateRem(64px);
+        }
+
+        @include min-mobile {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @include mobile {
+            width: calculateRem(40px);
+            height: calculateRem(40px);
+            top: calculateRem(16px);
+            right: calculateRem(16px);
+        }
+    }
+
+    &:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 18px 0 18px 32px;
+        border-color: transparent transparent transparent $color-black-base;
+        content: '';
+
+        @include tablet {
+            border-width: 10px 0 10px 16px;
+        }
+
+        @include min-mobile {
+            top: 50%;
+            left: 50%;
+            transform: translate(-35%, -50%);
+        }
+
+        @include mobile {
+            top: calculateRem(28px);
+            right: calculateRem(27px);
+            border-width: 8px 0 8px 14px;
+        }
+    }
+
+    @include min-tablet {
+        height: calculateRem(420px);
+    }
+
+    @include tablet {
+        padding-bottom: 57%;
+        margin-bottom: calculateRem(56px);
+    }
+}

@@ -1,0 +1,15 @@
+.main {
+    background-color: $color-gray-background;
+
+    @include min-tablet {
+        margin-top: calculateRem(-124px);
+    }
+
+    @at-root .page-main & {
+        background-color: $color-white;
+    }
+
+    @at-root .page-purple & {
+        background-color: $color-dark-purple;
+    }
+}

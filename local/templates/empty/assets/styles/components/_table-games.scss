@@ -1,0 +1,313 @@
+.table-games {
+    $root: &;
+
+    display: block;
+    counter-reset: number;
+
+    @at-root #{&}__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $color-purple;
+        padding: calculateRem(16px) calculateRem(60px);
+        margin-bottom: calculateRem(6px);
+
+        @include desktop {
+            padding: calculateRem(16px) calculateRem(48px);
+        }
+
+        @include desktop-small {
+            padding: calculateRem(14px) calculateRem(44px);
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__row {
+        display: flex;
+        background-color: $color-white;
+        counter-increment: number;
+        padding: calculateRem(14px) calculateRem(60px);
+        margin-bottom: calculateRem(6px);
+
+        @include desktop {
+            padding: calculateRem(14px) calculateRem(48px);
+        }
+
+        @include desktop-small {
+            padding: calculateRem(12px) calculateRem(44px);
+        }
+
+        @include min-tablet {
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @include tablet {
+            position: relative;
+            flex-wrap: wrap;
+            padding: calculateRem(20px) calculateRem(32px);
+
+            &:first-child {
+                margin-top: calculateRem(6px);
+            }
+
+            &:after {
+                position: absolute;
+                display: inline-block;
+                vertical-align: middle;
+                top: calculateRem(16px);
+                right: calculateRem(16px);
+                font-size: calculateRem(24px);
+                line-height: calculateRem(32px);
+                color: rgba($color-black-base, 0.5);
+                font-weight: 800;
+                content: counter(number, decimal-leading-zero);
+            }
+        }
+
+        @include tablet-small {
+            padding: calculateRem(20px) calculateRem(24px);
+        }
+
+        @include mobile {
+            padding: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__list {
+        display: block;
+
+        @include tablet {
+            max-height: 0;
+            transition: max-height 0.4s cubic-bezier(0, 0, .2, 1);
+            overflow: hidden;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @at-root #{&}__col {
+        display: block;
+
+        @include min-tablet {
+            &:nth-child(1) {
+                display: flex;
+                align-items: center;
+                flex: 1 1 38%;
+                max-width: 38%;
+            }
+
+            &:nth-child(2) {
+                flex: 1 1 20%;
+                max-width: 20%;
+            }
+
+            &:nth-child(3),
+            &:nth-child(4) {
+                flex: 1 1 15%;
+                max-width: 15%;
+                text-align: right;
+            }
+
+        }
+
+        @include tablet {
+            &:nth-child(1) {
+                width: 100%;
+                margin-bottom: calculateRem(4px);
+            }
+
+            &:nth-child(2) {
+                width: 100%;
+                margin-bottom: calculateRem(20px);
+            }
+
+            &:nth-child(3) {
+                margin-right: calculateRem(60px);
+            }
+        }
+
+        @include mobile {
+            &:nth-child(2) {
+                margin-bottom: calculateRem(12px);
+            }
+        }
+
+        #{$root}__row & {
+            @include min-tablet {
+                &:nth-child(1) {
+                    &:before {
+                        display: block;
+                        font-size: calculateRem(24px);
+                        line-height: calculateRem(32px);
+                        color: rgba($color-black-base, 0.5);
+                        font-weight: 800;
+                        content: counter(number, decimal-leading-zero);
+                        margin-right: calculateRem(32px);
+
+                        @include desktop {
+                            font-size: calculateRem(20px);
+                            line-height: calculateRem(28px);
+                            margin-right: calculateRem(24px);
+                        }
+
+                        @include desktop-small {
+                            font-size: calculateRem(18px);
+                            line-height: calculateRem(26px);
+                            margin-right: calculateRem(20px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @at-root #{&}__collapse {
+        @include min-tablet {
+            display: none;
+        }
+
+        @include tablet {
+            position: relative;
+            display: block;
+            width: 100%;
+            border: 0;
+            color: $color-white;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: calculateRem(24px);
+            background-color: $color-purple;
+            padding: 0 calculateRem(24px);
+            height: calculateRem(52px);
+            text-align: left;
+            line-height: calculateRem(52px);
+            cursor: pointer;
+
+            &:after {
+                position: absolute;
+                display: block;
+                top: calc(50% - #{calculateRem(3px)});
+                right: calculateRem(16px);
+                width: calculateRem(12px);
+                height: calculateRem(7px);
+                background-image: url('../../images/icons/icon-arrow-white.svg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                content: '';
+                transition: transform 0.2s ease-out;
+            }
+
+            #{$root}--show & {
+                &:after {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        @include mobile {
+            padding: 0 calculateRem(16px);
+            height: calculateRem(48px);
+            font-size: calculateRem(18px);
+            line-height: calculateRem(48px);
+        }
+    }
+
+    @at-root #{&}__text {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+
+        @include desktop-only {
+            font-size: calculateRem(22px);
+            line-height: calculateRem(30px);
+        }
+
+        @include desktop-small-only {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        #{$root}__heading & {
+            color: $color-white;
+        }
+
+        #{$root}__col:first-child & {
+            padding-right: calculateRem(52px);
+        }
+    }
+
+    @at-root #{&}__date {
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 600;
+        color: rgba($color-black-base, 0.7);
+
+        @include desktop-only {
+            font-size: calculateRem(22px);
+            line-height: calculateRem(30px);
+        }
+
+        @include desktop-small-only {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include tablet {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__number {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: 1;
+        font-weight: 700;
+
+        @include desktop-only {
+            font-size: calculateRem(22px);
+        }
+
+        @include desktop-small-only {
+            font-size: calculateRem(20px);
+        }
+
+        @include tablet {
+            font-size: calculateRem(32px);
+        }
+    }
+
+    @at-root #{&}__caption {
+        @include min-tablet {
+            display: none;
+        }
+
+        @include tablet {
+            display: block;
+            font-size: calculateRem(16px);
+            line-height: calculateRem(20px);
+            font-weight: 700;
+            color: rgba($color-black-base, 0.7);
+
+            &:first-child {
+                margin-bottom: calculateRem(2px);
+            }
+
+            &:last-child {
+                margin-top: calculateRem(4px);
+            }
+        }
+    }
+}

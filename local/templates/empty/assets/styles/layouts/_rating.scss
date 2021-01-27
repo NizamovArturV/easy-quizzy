@@ -1,0 +1,115 @@
+.rating {
+    display: block;
+
+    @at-root #{&}__top {
+        position: relative;
+        display: block;
+        padding-bottom: calculateRem(214px);
+        background-color: $color-dark-purple;
+
+        @include tablet {
+            padding-bottom: calculateRem(160px);
+        }
+
+        @include mobile {
+            padding-bottom: calculateRem(132px);
+        }
+    }
+
+    @at-root #{&} .heading {
+        position: relative;
+        z-index: 1;
+    }
+
+    @at-root #{&}__shapes {
+        position: absolute;
+        display: block;
+        height: calc(100% + #{calculateRem(204px)});
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+
+        @include tablet {
+            height: calc(100% + #{calculateRem(40px)});
+        }
+
+        @include mobile {
+            height: calc(100% + #{calculateRem(24px)});
+        }
+    }
+
+    @at-root #{&}__block {
+        display: block;
+        background-color: $color-gray-background;
+        padding-bottom: calculateRem(80px);
+
+        @include tablet {
+            padding-bottom: calculateRem(40px);
+        }
+
+        @include mobile {
+            padding-bottom: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__container {
+        @include container;
+    }
+
+    @at-root #{&}__table {
+        position: relative;
+        display: block;
+        margin-top: calculateRem(-134px);
+
+        &:before {
+            position: absolute;
+            display: block;
+            top: calculateRem(-24px);
+            left: calculateRem(-24px);
+            width: 100%;
+            height: calculateRem(158px);
+            border-style: solid;
+            border-color: $color-white;
+            border-width: 2px 2px 0 2px;
+            border-radius: 2px 2px 0 0;
+
+            @include desktop {
+                top: calculateRem(-20px);
+                left: calculateRem(-20px);
+                height: calculateRem(154px);
+            }
+
+            @include min-tablet {
+                content: '';
+            }
+        }
+
+        //&:after {
+        //    position: absolute;
+        //    display: block;
+        //    right: calculateRem(-344px);
+        //    bottom: calculateRem(-320px);
+        //    width: calculateRem(366px);
+        //    height: calculateRem(874px);
+        //    background-image: url('../../images/icons/icon-lightning.svg');
+        //    background-position: center center;
+        //    background-size: contain;
+        //    background-repeat: no-repeat;
+        //    opacity: 0.3;
+        //
+        //    @include min-desktop-medium {
+        //        content: '';
+        //    }
+        //}
+
+        @include tablet {
+            margin-top: calculateRem(-120px);
+        }
+
+        @include mobile {
+            margin-top: calculateRem(-108px);
+        }
+    }
+}

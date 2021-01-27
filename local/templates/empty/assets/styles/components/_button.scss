@@ -1,0 +1,76 @@
+.button {
+    $root: &;
+
+    @include transition-background-color;
+
+    display: inline-block;
+    height: calculateRem(60px);
+    padding: 0 calculateRem(40px);
+    border: 0;
+    border-radius: 2px;
+    font-size: 0;
+    line-height: calculateRem(60px);
+    background-color: $color-yellow;
+    color: $color-black-text;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: $color-yellow-hover;
+    }
+
+    @include mobile-small {
+        width: 100%;
+        height: calculateRem(52px);
+        line-height: calculateRem(52px);
+        padding: 0 calculateRem(24px);
+    }
+
+    @at-root #{&}__text {
+        font-size: calculateRem(16px);
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        width: 100%;
+    }
+
+    @at-root #{&}--small {
+        height: calculateRem(52px);
+        line-height: calculateRem(52px);
+        padding: 0 calculateRem(32px);
+    }
+
+    @at-root #{&}--fit {
+        width: 100%;
+    }
+
+    @at-root #{&}--outline {
+        line-height: calculateRem(58px);
+        padding: 0 calculateRem(39px);
+        border: 1px solid $color-black-base;
+        background-color: transparent;
+        color: $color-black-base;
+        transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+        &:hover {
+            background-color: $color-black-base;
+            color: $color-white;
+        }
+
+        @include mobile-small {
+            line-height: calculateRem(50px);
+            padding: 0 calculateRem(23px);
+        }
+    }
+
+    @at-root #{&}--outline#{&}--small {
+        line-height: calculateRem(50px);
+        padding: 0 calculateRem(23px);
+    }
+}

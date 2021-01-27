@@ -1,0 +1,47 @@
+.input {
+    @include transition-color;
+
+    display: inline-block;
+    width: 100%;
+    height: calculateRem(60px);
+    padding: 0 calculateRem(17px);
+    border: 1px solid rgba($color-black, 0.2);
+    border-radius: 2px;
+    font-size: calculateRem(20px);
+    line-height: 1;
+    background-color: $color-white;
+    color: $color-black-base;
+
+    &::placeholder {
+        color: rgba($color-black-base, 0.5);
+    }
+
+    &:invalid {
+        box-shadow: none; // firefox
+    }
+
+    @include tablet {
+        height: calculateRem(52px);
+        font-size: calculateRem(18px);
+    }
+
+    @include mobile {
+        font-size: calculateRem(16px);
+        height: calculateRem(46px);
+        padding: 0 calculateRem(15px);
+    }
+
+    @at-root #{&}--small {
+        height: calculateRem(40px);
+        padding: 0 calculateRem(15px);
+        font-size: calculateRem(16px);
+    }
+
+    @at-root #{&}--error {
+        border-color: $color-pink;
+    }
+
+    @at-root .password & {
+        padding-right: calculateRem(56px);
+    }
+}

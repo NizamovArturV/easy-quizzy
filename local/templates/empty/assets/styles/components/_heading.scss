@@ -1,0 +1,107 @@
+.heading {
+    $root: &;
+
+    &:not(#{$root}--fit) {
+        @include container;
+    }
+
+    @at-root #{&}__inner {
+        @include push--auto;
+
+        display: block;
+        max-width: calculateRem(800px);
+        width: 100%;
+        text-align: center;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        #{$root}--fit & {
+            max-width: none;
+        }
+    }
+
+    @at-root #{&}__title {
+        display: block;
+        margin-bottom: calculateRem(32px);
+
+        @at-root .page-main & {
+            color: $color-yellow;
+        }
+
+        @at-root .page-purple & {
+            color: $color-yellow;
+        }
+
+        @include tablet {
+            margin-bottom: calculateRem(24px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__text {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+        color: $color-white;
+        margin-bottom: calculateRem(32px);
+        margin-top: calculateRem(40px);
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            text-align: left;
+            margin-top: calculateRem(32px);
+            margin-bottom: calculateRem(24px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-top: 0;
+            margin-bottom: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__button {
+        position: relative;
+        display: inline-block;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        color: $color-yellow;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid $color-yellow;
+            content: '';
+            left: 0;
+            bottom: calculateRem(4px);
+        }
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+        }
+    }
+}

@@ -1,0 +1,196 @@
+.points {
+    $root: &;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include tablet {
+        margin-left: calculateRem(-12px);
+        margin-right: calculateRem(-12px);
+    }
+
+    @at-root #{&}__item {
+        position: relative;
+        display: block;
+        height: calculateRem(164px);
+
+        &:nth-child(1) {
+            @include min-desktop {
+                width: calculateRem(94px);
+            }
+
+            @include desktop-only {
+                width: calculateRem(80px);
+            }
+
+            @include desktop-small-only {
+                width: calculateRem(68px);
+            }
+        }
+
+        &:nth-child(2) {
+            @include min-desktop {
+                width: calculateRem(282px);
+            }
+
+            @include desktop-only {
+                width: calculateRem(240px);
+            }
+
+            @include desktop-small-only {
+                width: calculateRem(206px);
+            }
+        }
+
+        &:nth-child(3) {
+            @include min-desktop {
+                width: calculateRem(248px);
+            }
+
+            @include desktop-only {
+                width: calculateRem(212px);
+            }
+
+            @include desktop-small-only {
+                width: calculateRem(180px);
+            }
+        }
+
+        &:nth-child(4) {
+            @include min-desktop {
+                width: calculateRem(196px);
+            }
+
+            @include desktop-only {
+                width: calculateRem(168px);
+            }
+
+            @include desktop-small-only {
+                width: calculateRem(144px);
+            }
+        }
+
+        @include desktop-only {
+            height: calculateRem(140px);
+        }
+
+        @include desktop-small-only {
+            height: calculateRem(120px);
+        }
+
+        @include tablet {
+            width: 50%;
+            height: calculateRem(120px);
+            padding-left: calculateRem(12px);
+            padding-right: calculateRem(12px);
+
+            &:not(:nth-last-child(-n + 2)) {
+                margin-bottom: calculateRem(24px);
+            }
+        }
+
+        @include mobile {
+            height: calculateRem(78px);
+        }
+    }
+
+    @at-root #{&}__number {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-position: top center;
+        background-repeat: no-repeat;
+
+        @include tablet {
+            position: relative;
+        }
+
+        #{$root}__item:nth-child(1) & {
+            background-image: url('../../images/icons/icon-rounds.svg');
+
+            @include tablet {
+                width: calculateRem(68px);
+            }
+
+            @include mobile {
+                width: calculateRem(44px);
+            }
+        }
+
+        #{$root}__item:nth-child(2) & {
+            background-image: url('../../images/icons/icon-players.svg');
+
+            @include tablet {
+                width: calculateRem(206px);
+            }
+
+            @include mobile {
+                width: calculateRem(134px);
+            }
+        }
+
+        #{$root}__item:nth-child(3) & {
+            background-image: url('../../images/icons/icon-play-time.svg');
+
+            @include tablet {
+                width: calculateRem(180px);
+            }
+
+            @include mobile {
+                width: calculateRem(118px);
+            }
+        }
+
+        #{$root}__item:nth-child(4) & {
+            background-image: url('../../images/icons/icon-questions.svg');
+
+            @include tablet {
+                width: calculateRem(144px);
+            }
+
+            @include mobile {
+                width: calculateRem(94px);
+            }
+        }
+    }
+
+    @at-root #{&}__caption {
+        position: absolute;
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        right: calculateRem(-24px);
+        bottom: calculateRem(44px);
+        font-weight: 600;
+        color: $color-white;
+
+        @include desktop {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include desktop-small {
+            bottom: calculateRem(34px);
+        }
+
+        @include tablet {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+            bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            bottom: calculateRem(12px);
+            right: auto;
+            left: 0;
+            white-space: nowrap;
+        }
+    }
+
+
+}

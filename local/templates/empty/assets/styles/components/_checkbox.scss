@@ -1,0 +1,76 @@
+.checkbox {
+    $root: &;
+
+    display: block;
+
+    @at-root #{&}__label {
+        position: relative;
+        display: block;
+        padding: calculateRem(4px) calculateRem(4px) calculateRem(4px) calculateRem(32px);
+        cursor: pointer;
+    }
+
+    @at-root #{&}__input {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+
+    @at-root #{&}__mark {
+        position: absolute;
+        display: block;
+        left: calculateRem(4px);
+        top: calculateRem(4px);
+        width: calculateRem(18px);
+        height: calculateRem(18px);
+        border: 2px solid $color-pink;
+        border-radius: 2px;
+        background-color: $color-white;
+
+        &:after {
+            position: absolute;
+            display: inline-block;
+            top: calculateRem(2px);
+            left: calculateRem(5px);
+            width: calculateRem(5px);
+            height: calculateRem(9px);
+            transform: rotate(45deg);
+            border-radius: 0;
+            border: 2px solid $color-white;
+            border-left: transparent;
+            border-top: transparent;
+            background: none;
+            opacity: 0;
+            content: '';
+            transition: opacity 0.12s ease-out;
+        }
+
+        #{$root}__input:checked + & {
+            background-color: $color-pink;
+
+            &:after {
+                opacity: 1;
+            }
+        }
+
+        #{$root}__input:disabled + & {
+            border-color: #CECECE;
+        }
+    }
+
+    @at-root #{&}__text {
+        display: inline-block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(20px);
+        font-weight: 700;
+        color: $color-black-base;
+
+        #{$root}__input:disabled ~ & {
+            color: rgba($color-black-base, 0.5);
+        }
+    }
+}

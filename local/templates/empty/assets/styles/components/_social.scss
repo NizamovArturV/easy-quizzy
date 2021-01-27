@@ -1,0 +1,35 @@
+.social {
+    display: block;
+    font-size: 0;
+    line-height: 1;
+
+    & > :last-child {
+        margin-right: 0;
+    }
+
+    @at-root #{&}__item {
+        @include transition-background-color;
+
+        display: inline-block;
+        width: calculateRem(32px);
+        height: calculateRem(32px);
+        font-size: 0;
+        line-height: calculateRem(32px);
+        background-color: $color-white;
+        text-align: center;
+        fill: $color-black;
+        border-radius: 50%;
+        margin-right: calculateRem(10px);
+
+        &:hover {
+            background-color: rgba($color-white, 0.8);
+        }
+
+        @at-root #{&} svg {
+            display: inline-block;
+            vertical-align: middle;
+            width: calculateRem(16px);
+            height: calculateRem(16px);
+        }
+    }
+}

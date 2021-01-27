@@ -1,0 +1,479 @@
+.modal-reg {
+    $root: &;
+
+    display: none;
+
+    @at-root #{&}--show {
+        position: fixed;
+        display: block;
+        min-width: 320px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        padding: calculateRem(40px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: rgba($color-dark-purple, 0.8);
+
+        @include tablet {
+            padding: calculateRem(40px) calculateRem(32px);
+        }
+
+        @include mobile {
+            padding: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__dialog {
+        @include push--auto;
+
+        display: flex;
+        pointer-events: none;
+        max-width: calculateRem(700px);
+
+        @include min-mobile {
+            min-height: 100%;
+            align-items: center;
+        }
+    }
+
+    @at-root #{&}__close {
+        position: absolute;
+        display: inline-block;
+        top: calculateRem(-24px);
+        right: calculateRem(-24px);
+        width: calculateRem(52px);
+        height: calculateRem(52px);
+        font-size: 0;
+        line-height: calculateRem(52px);
+        background-color: $color-yellow;
+        cursor: pointer;
+        text-align: center;
+        border: 0;
+        padding: 0;
+        z-index: 1;
+
+        &:after {
+            display: inline-block;
+            vertical-align: middle;
+            width: calculateRem(20px);
+            height: calculateRem(20px);
+            content: '';
+            background-image: url('../../images/icons/icon-close-modal.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+
+            @include tablet {
+                width: calculateRem(16px);
+                height: calculateRem(16px);
+            }
+        }
+
+        @include tablet {
+            top: 0;
+            right: 0;
+            width: calculateRem(40px);
+            height: calculateRem(40px);
+            line-height: calculateRem(40px);
+        }
+    }
+
+    @at-root #{&}__frame {
+        position: relative;
+        display: block;
+        background-color: $color-white;
+        pointer-events: auto;
+    }
+
+    @at-root #{&}__top {
+        display: block;
+        padding-top: calculateRem(80px);
+        padding-left: calculateRem(32px);
+        padding-right: calculateRem(32px);
+        background-color: $color-purple;
+
+        @include tablet {
+            padding: calculateRem(60px) calculateRem(24px) calculateRem(24px);
+        }
+
+        @include mobile {
+            padding: calculateRem(48px) calculateRem(16px) calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__heading {
+        display: block;
+        text-align: center;
+        margin-bottom: calculateRem(40px);
+
+        @include tablet {
+            margin-bottom: calculateRem(24px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__subheading {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 800;
+        color: $color-white;
+        margin-bottom: calculateRem(16px);
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            margin-bottom: calculateRem(12px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-bottom: calculateRem(4px);
+        }
+    }
+
+    @at-root #{&}__title {
+        display: block;
+        color: $color-yellow;
+    }
+
+    @at-root #{&}__features {
+
+        @include min-tablet {
+            padding-bottom: calculateRem(40px);
+        }
+
+        @include min-tablet-small {
+            display: flex;
+        }
+
+        & > :last-child {
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__feature {
+        position: relative;
+        display: block;
+        padding-left: calculateRem(32px);
+
+        &:before {
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 0;
+            width: calculateRem(24px);
+            height: calculateRem(24px);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            content: '';
+        }
+
+        &:nth-child(1) {
+            &:before {
+                background-image: url('../../images/icons/icon-feature-clock.svg');
+            }
+        }
+
+        &:nth-child(2) {
+            &:before {
+                background-image: url('../../images/icons/icon-feature-pin.svg');
+            }
+        }
+
+        &:nth-child(3) {
+            &:before {
+                background-image: url('../../images/icons/icon-feature-cash.svg');
+            }
+        }
+
+        @include min-tablet-small {
+            margin-right: calculateRem(48px);
+        }
+
+        @include tablet-small {
+            &:not(:last-child) {
+                margin-bottom: calculateRem(16px);
+            }
+        }
+    }
+
+    @at-root #{&}__name {
+        display: block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(20px);
+        font-weight: 700;
+        color: $color-white;
+        margin-bottom: calculateRem(4px);
+    }
+
+    @at-root #{&}__caption {
+        display: block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(20px);
+        font-weight: 600;
+        color: rgba($color-white, 0.7);
+    }
+
+    @at-root #{&}__tabs {
+        @include min-tablet {
+            display: flex;
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__tab {
+        display: block;
+        flex: 1 1 auto;
+        border: 0;
+        padding: 0 calculateRem(24px);
+        height: calculateRem(48px);
+        font-size: calculateRem(16px);
+        line-height: calculateRem(48px);
+        font-weight: 700;
+        color: rgba($color-white, 0.7);
+        background-color: transparent;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+        &:focus {
+            outline: none;
+        }
+
+        @at-root #{&}--active {
+            background-color: $color-white;
+            color: $color-black-base;
+            border-radius: 2px 2px 0 0;
+        }
+    }
+
+    @at-root #{&}__body {
+        display: block;
+        padding: calculateRem(40px) calculateRem(32px) calculateRem(80px);
+
+        @include tablet {
+            padding: calculateRem(24px) calculateRem(24px) calculateRem(32px);
+        }
+
+        @include mobile {
+            padding: calculateRem(12px) calculateRem(16px) calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__form {
+        display: block;
+        margin-bottom: calculateRem(40px);
+
+        @include tablet {
+            margin-bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__block {
+
+        @include min-tablet {
+            display: none;
+
+            @at-root #{&}--active {
+                display: block;
+            }
+        }
+
+        @include tablet {
+            &:not(:last-child) {
+                margin-bottom: calculateRem(12px);
+            }
+        }
+    }
+
+    @at-root #{&}__roll {
+        @include min-tablet {
+            max-height: none !important;
+            height: auto;
+        }
+
+        @include tablet {
+            display: block;
+            max-height: 0;
+            background-color: $color-white;
+            width: 100%;
+            transition: max-height 0.4s cubic-bezier(0, 0, .2, 1);
+            overflow: hidden;
+        }
+    }
+
+    @at-root #{&}__content {
+        display: block;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        @include tablet {
+            padding-top: calculateRem(20px);
+
+            #{$root}__block:not(:last-child) & {
+                padding-bottom: calculateRem(24px);
+                border-bottom: 1px solid rgba($color-black, 0.2);
+            }
+        }
+    }
+
+    @at-root #{&}__persons {
+        display: block;
+        margin-bottom: calculateRem(40px);
+
+        @include tablet {
+            margin-bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__submit {
+        display: block;
+        text-align: center;
+        font-size: 0;
+    }
+
+    @at-root #{&}__send {
+        margin-bottom: calculateRem(12px);
+    }
+
+    @at-root #{&}__agreement {
+        @include push--auto;
+
+        display: block;
+        max-width: calculateRem(232px);
+        width: 100%;
+        font-size: calculateRem(12px);
+        line-height: calculateRem(16px);
+        color: rgba($color-black, 0.7);
+
+        @at-root #{&} a {
+            color: rgba($color-black, 0.7);
+            text-decoration: underline;
+        }
+    }
+
+    @at-root #{&}__collapse {
+        @include min-tablet {
+            display: none;
+        }
+
+        @include tablet {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: calculateRem(40px);
+            font-size: calculateRem(18px);
+            line-height: calculateRem(40px);
+            font-weight: 700;
+            text-align: left;
+            border: 0;
+            padding: 0 calculateRem(32px) 0 calculateRem(16px);
+            background-color: transparent;
+            cursor: pointer;
+
+            &:after {
+                position: absolute;
+                display: block;
+                width: calculateRem(12px);
+                height: calculateRem(7px);
+                right: calculateRem(16px);
+                top: calc(50% - #{calculateRem(3px)});
+                content: '';
+                background-image: url('../../images/icons/icon-modal-collapse-arrow.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__text {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+        color: $color-black-base;
+        margin-bottom: calculateRem(40px);
+        text-align: center;
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            margin-bottom: calculateRem(32px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-bottom: calculateRem(24px);
+        }
+    }
+
+    @at-root #{&}__success {
+        display: block;
+        text-align: center;
+
+        & > :last-child {
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__success-title {
+        display: block;
+        text-transform: none;
+        margin-bottom: calculateRem(24px);
+
+        @include tablet {
+            margin-bottom: calculateRem(20px);
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__success-text {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+        }
+    }
+}

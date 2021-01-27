@@ -1,0 +1,95 @@
+.coming {
+    $root: &;
+
+    display: block;
+
+    @include min-tablet {
+        padding-bottom: calculateRem(100px);
+    }
+
+    @at-root #{&}__top {
+        display: block;
+        padding-top: calculateRem(100px);
+        background-color: $color-dark-purple;
+
+        @include min-tablet {
+            padding-bottom: calculateRem(200px);
+        }
+
+        @include tablet {
+            padding-top: calculateRem(40px);
+        }
+
+        @include mobile {
+            padding-top: calculateRem(24px);
+        }
+    }
+    
+    @at-root #{&}__container {
+        @include container;
+    }
+
+    @at-root #{&}__desktop {
+        display: block;
+        margin-top: calculateRem(-164px);
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__tabs {
+        display: block;
+        margin-bottom: calculateRem(40px);
+    }
+
+    @at-root #{&}__content {
+        display: block;
+    }
+
+    @at-root #{&}__block {
+        display: none;
+        opacity: 0;
+
+        @at-root #{&}--active {
+            display: block;
+            opacity: 0;
+            transform: translateY(#{calculateRem(-24px)});
+            animation: appearAnimation 0.8s ease-out 0.1s forwards;
+        }
+    }
+
+    @at-root #{&}__mobile {
+        padding-top: calculateRem(40px);
+        background-color: $color-dark-purple;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        @include min-tablet {
+            display: none;
+        }
+
+        @include mobile {
+            padding-top: calculateRem(32px);
+        }
+    }
+
+    @at-root #{&}__accordion {
+        padding-bottom: calculateRem(28px);
+        margin-bottom: calculateRem(40px);
+    }
+
+    @keyframes appearAnimation {
+        from {
+            opacity: 0;
+            transform: translateY(#{calculateRem(-24px)});
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

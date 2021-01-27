@@ -1,0 +1,463 @@
+.card-game {
+    $root: &;
+
+    position: relative;
+    display: block;
+    background-color: $color-pink;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+
+    &:before {
+        position: absolute;
+        display: block;
+        width: calculateRem(88px);
+        height: calculateRem(220px);
+        background: url('../../images/icons/icon-lightning.svg') no-repeat center center;
+        background-size: contain;
+        content: '';
+        left: calculateRem(24px);
+        top: calculateRem(-24px);
+        z-index: 1;
+
+        @include desktop-medium {
+            top: calculateRem(16px);
+            left: calculateRem(20px);
+            width: calculateRem(80px);
+            height: calculateRem(198px);
+        }
+
+        @include desktop {
+            left: calculateRem(16px);
+        }
+
+        @include tablet {
+            width: calculateRem(66px);
+            height: calculateRem(164px);
+            left: calculateRem(16px);
+        }
+
+        @include mobile {
+            top: calculateRem(8px);
+            left: calculateRem(12px);
+            width: calculateRem(54px);
+            height: calculateRem(128px);
+        }
+    }
+
+    @at-root #{&}--pop {
+        background-color: $color-purple;
+    }
+
+    @at-root #{&}__shell {
+        position: relative;
+        display: block;
+        height: calc(100% - #{calculateRem(60px)});
+        padding-left: calculateRem(40px);
+        overflow: hidden;
+
+        &:before,
+        &:after {
+            position: absolute;
+            display: block;
+            width: calculateRem(40px);
+            height: calculateRem(40px);
+            border-radius: 50%;
+            content: '';
+            top: 46%;
+            background-color: $color-dark-purple;
+
+            @include mobile {
+                width: calculateRem(30px);
+                height: calculateRem(30px);
+            }
+        }
+
+        &:before {
+            left: calculateRem(-28px);
+
+            @include mobile {
+                left: calculateRem(-20px);
+            }
+        }
+
+        &:after {
+            right: calculateRem(-28px);
+
+            @include mobile {
+                right: calculateRem(-20px);
+            }
+        }
+
+        @include desktop {
+            padding-left: calculateRem(36px);
+        }
+
+        @include tablet {
+            height: calc(100% - #{calculateRem(52px)});
+        }
+
+        @include mobile {
+            height: calc(100% - #{calculateRem(48px)});
+            padding-left: calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__inner {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        background-color: $color-white;
+        clip-path: polygon(#{calculateRem(56px)} 0, 100% 0, 100% 100%, 0% 100%);
+        padding-left: calculateRem(92px);
+        height: 100%;
+
+        @include desktop-medium {
+            clip-path: polygon(#{calculateRem(52px)} 0, 100% 0, 100% 100%, 0% 100%);
+            padding-left: calculateRem(86px);
+        }
+
+        @include desktop {
+            clip-path: polygon(#{calculateRem(48px)} 0, 100% 0, 100% 100%, 0% 100%);
+            padding-left: calculateRem(80px);
+        }
+
+        @include mobile {
+            padding-left: calculateRem(56px);
+            clip-path: polygon(#{calculateRem(40px)} 0, 100% 0, 100% 100%, 0% 100%);
+        }
+    }
+
+    @at-root #{&}__content {
+        display: block;
+        width: 100%;
+        padding-top: calculateRem(28px);
+        padding-right: calculateRem(32px);
+        padding-bottom: calculateRem(16px);
+
+        @include desktop {
+            padding-right: calculateRem(16px);
+        }
+
+        @include tablet {
+            padding: calculateRem(20px) calculateRem(24px) calculateRem(16px) 0;
+        }
+
+        @include mobile {
+            padding: calculateRem(12px) calculateRem(12px) calculateRem(12px) 0;
+        }
+    }
+
+    @at-root #{&}__button {
+        @include transition-background-color;
+
+        display: block;
+        width: 100%;
+        font-size: calculateRem(18px);
+        line-height: calculateRem(60px);
+        text-align: center;
+        font-weight: 800;
+        padding: 0 calculateRem(16px);
+        border: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        background-color: $color-yellow;
+        color: $color-black-base;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-yellow-hover;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        @include tablet {
+            line-height: calculateRem(52px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(48px);
+        }
+    }
+
+    @at-root #{&}__date {
+        display: block;
+        font-size: calculateRem(18px);
+        line-height: calculateRem(24px);
+        margin-bottom: calculateRem(4px);
+        color: $color-pink;
+        font-weight: 800;
+
+        #{$root}--pop & {
+            color: $color-purple;
+        }
+
+        @include tablet {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(14px);
+            line-height: calculateRem(22px);
+        }
+    }
+
+    @at-root #{&}__title {
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: calculateRem(12px);
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+            margin-bottom: calculateRem(6px);
+        }
+    }
+
+    @at-root #{&}__list {
+        position: relative;
+        display: block;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        @include min-mobile {
+            max-width: calculateRem(340px);
+            width: 100%;
+        }
+    }
+
+    @at-root #{&}__item {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: calculateRem(10px);
+
+        &:nth-child(3) {
+            align-items: center;
+
+            @include min-tablet {
+                margin-top: calculateRem(16px);
+            }
+        }
+
+        @include mobile {
+            margin-bottom: calculateRem(8px);
+        }
+    }
+
+    @at-root #{&}__caption {
+        display: block;
+        font-size: calculateRem(18px);
+        line-height: calculateRem(20px);
+        font-weight: 600;
+        padding-left: calculateRem(24px);
+
+        &:before {
+            position: absolute;
+            display: block;
+            width: calculateRem(15px);
+            height: calculateRem(15px);
+            content: '';
+            left: 0;
+            top: calculateRem(3px);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            @include mobile {
+                top: calculateRem(2px);
+                width: calculateRem(12px);
+                height: calculateRem(12px);
+            }
+        }
+
+        #{$root}__item:nth-child(1) & {
+            &:before {
+                background-image: url('../../images/icons/icon-tab-pin.svg');
+            }
+        }
+
+        #{$root}__item:nth-child(2) & {
+            &:before {
+                background-image: url('../../images/icons/icon-tab-clock.svg');
+            }
+        }
+
+        #{$root}__item:nth-child(3) & {
+            @include min-tablet {
+                padding-left: 0;
+                font-size: calculateRem(36px);
+                line-height: 1;
+                font-weight: 600;
+            }
+
+            @at-root #{&} span {
+                @include min-tablet {
+                    font-weight: 400;
+                }
+            }
+
+            @include tablet {
+                &:before {
+                    background-image: url('../../images/icons/icon-tab-cash.svg');
+                }
+            }
+        }
+
+        @include tablet {
+            font-size: calculateRem(16px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(14px);
+            line-height: calculateRem(18px);
+            padding-left: calculateRem(20px);
+        }
+    }
+
+    @at-root #{&}__line {
+        position: relative;
+        display: block;
+        flex-shrink: 0;
+        width: calculateRem(72px);
+
+        &:before {
+            position: absolute;
+            display: block;
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            content: '';
+            background-image: url("../../images/icons/icon-card-line.svg");
+            background-repeat: repeat-y;
+            background-position: center center;
+            background-size: contain;
+        }
+
+        #{$root}--pop & {
+            border-color: $color-purple;
+        }
+
+        @include desktop-medium {
+            width: calculateRem(64px);
+        }
+
+        @include desktop {
+            width: calculateRem(56px);
+        }
+
+        @include mobile {
+            width: calculateRem(40px);
+        }
+    }
+
+    @at-root #{&}__type {
+        position: absolute;
+        display: block;
+        font-size: calculateRem(16px);
+        line-height: 1;
+        text-transform: uppercase;
+        font-weight: 800;
+        top: 54%;
+        left: 45%;
+        color: $color-pink;
+        transform: translateY(-50%) translateX(-50%) rotate(-90deg);
+
+        #{$root}--pop & {
+            color: $color-purple;
+        }
+
+        @include tablet {
+            top: 55%;
+            font-size: calculateRem(14px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(12px);
+        }
+    }
+
+    @at-root #{&}__location {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        right: 0;
+        font-size: calculateRem(18px);
+        line-height: calculateRem(22px);
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        font-weight: 600;
+        color: $color-pink;
+        cursor: pointer;
+        flex-shrink: 0;
+        margin-left: calculateRem(24px);
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid $color-pink;
+            bottom: 0;
+            left: 0;
+            content: '';
+        }
+
+        #{$root}--pop & {
+            color: $color-purple;
+
+            &:after {
+                border-color: $color-purple;
+            }
+        }
+
+        @include mobile {
+            margin-left: calculateRem(12px);
+            font-size: calculateRem(14px);
+            line-height: calculateRem(18px);
+        }
+    }
+
+    @at-root #{&}__deny {
+        display: inline-block;
+        padding: 0 calculateRem(12px);
+        font-size: calculateRem(16px);
+        line-height: calculateRem(30px);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: $color-white;
+        background-color: $color-pink;
+        border-radius: 2px;
+
+        @include tablet {
+            padding: 0 calculateRem(10px);
+            font-size: calculateRem(14px);
+            line-height: calculateRem(24px);
+        }
+
+        @include mobile {
+            padding: 0 calculateRem(8px);
+            font-size: calculateRem(10px);
+            line-height: calculateRem(18px);
+            letter-spacing: 0.1em;
+        }
+    }
+}

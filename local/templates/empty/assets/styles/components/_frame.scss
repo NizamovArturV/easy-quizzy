@@ -1,0 +1,128 @@
+.frame {
+    $root: &;
+
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &[data-frame='bottom-right'] {
+        padding-bottom: calculateRem(32px);
+
+        @include mobile {
+            padding-right: calculateRem(12px);
+            padding-bottom: calculateRem(12px);
+        }
+    }
+
+    &[data-frame='bottom-left'] {
+        padding-bottom: calculateRem(32px);
+
+        @include mobile {
+            padding-left: calculateRem(12px);
+            padding-bottom: calculateRem(12px);
+        }
+    }
+
+    @at-root #{&}__inner {
+        position: relative;
+        display: block;
+        padding: calculateRem(60px);
+        width: 100%;
+        height: 100%;
+
+        &:before {
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-color: $color-dark-purple;
+            border: 2px solid $color-white;
+            z-index: 1;
+        }
+
+        #{$root}[data-frame] & {
+            &:after {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                content: '';
+                border: 2px solid $color-white;
+                border-radius: 2px;
+            }
+        }
+
+        #{$root}[data-frame='bottom-right'] & {
+            &:after {
+                top: calculateRem(32px);
+                right: calculateRem(-32px);
+
+                @include mobile {
+                    top: calculateRem(12px);
+                    right: calculateRem(-12px);
+                }
+            }
+        }
+
+        #{$root}[data-frame='bottom-left'] & {
+            &:after {
+                top: calculateRem(32px);
+                left: calculateRem(-32px);
+
+                @include mobile {
+                    top: calculateRem(12px);
+                    left: calculateRem(-12px);
+                }
+            }
+        }
+
+        @include desktop-small {
+            padding: calculateRem(48px);
+        }
+
+        @include tablet {
+            padding: calculateRem(48px);
+        }
+
+        @include tablet-small {
+            padding: calculateRem(32px);
+        }
+
+        @include mobile {
+            padding: calculateRem(20px);
+        }
+
+        #{$root}--circle & {
+            @include tablet-small {
+                padding-top: calculateRem(48px);
+            }
+
+            @include mobile {
+                padding-top: calculateRem(44px);
+            }
+        }
+    }
+
+    @at-root #{&}__text {
+        position: relative;
+        display: block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+        color: $color-white;
+        z-index: 1;
+
+        @include tablet {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include mobile {
+            font-size: calculateRem(16px);
+            line-height: calculateRem(24px);
+        }
+    }
+}

@@ -1,0 +1,82 @@
+.form-modal {
+    $root: &;
+
+    @include min-tablet-small {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calculateRem(-10px);
+        margin-right: calculateRem(-10px);
+    }
+
+    @at-root #{&}--column {
+        @include min-tablet-small {
+            display: block;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__field {
+        display: block;
+        width: 100%;
+
+        @include min-tablet-small {
+            flex: 1 1 50%;
+            max-width: 50%;
+            padding-left: calculateRem(10px);
+            padding-right: calculateRem(10px);
+            margin-bottom: calculateRem(24px);
+
+            @include last-row(2) {
+                margin-bottom: 0;
+            }
+        }
+
+        #{$root}--column & {
+            @include min-tablet-small {
+                @include push--auto;
+            }
+        }
+
+        @include tablet-small {
+            &:not(:last-child) {
+                margin-bottom: calculateRem(16px);
+            }
+        }
+    }
+
+    @at-root #{&}__caption {
+        display: block;
+        text-transform: uppercase;
+        font-size: calculateRem(11px);
+        line-height: calculateRem(15px);
+        font-weight: 700;
+        color: rgba($color-black-base, 0.8);
+        letter-spacing: 0.03em;
+        margin-bottom: calculateRem(6px);
+    }
+
+    @at-root #{&}__forgot {
+        display: block;
+        text-align: right;
+        font-size: 0;
+        margin-top: calculateRem(6px);
+    }
+
+    @at-root #{&}__error {
+        display: block;
+        font-size: calculateRem(13px);
+        height: calculateRem(15px);
+        padding-top: calculateRem(6px);
+        font-weight: 600;
+        color: rgba($color-pink, 0.8);
+        letter-spacing: 0.02em;
+    }
+
+    @at-root #{&}__link {
+        display: inline-block;
+        font-size: calculateRem(14px);
+        line-height: calculateRem(20px);
+        color: rgba($color-purple, 0.7);
+    }
+}

@@ -1,0 +1,169 @@
+.menu-mobile {
+    $root: &;
+
+    @include min-tablet {
+        display: none;
+    }
+
+    @include tablet {
+        display: block;
+        position: fixed;
+        width: 100%;
+        min-width: 320px;
+        left: -100%;
+        height: calc(100% - #{calculateRem(54px)});
+        right: 0;
+        z-index: 10;
+        top: calculateRem(54px);
+        opacity: 0;
+        transition: opacity 0.2s ease-out, left 0.5s cubic-bezier(0, 0, 0.2, 1);
+        background-color: $color-dark-purple;
+    }
+
+    @at-root .menu-mobile-opened & {
+        @include tablet {
+            opacity: 1;
+            left: 0;
+            transition: opacity 0.12s ease-out, left 0.4s cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+
+    @at-root #{&}__inner {
+        @include container;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-top: calculateRem(32px);
+        padding-bottom: calculateRem(48px);
+    }
+
+    @at-root #{&}__body {
+        display: block;
+    }
+
+    @at-root #{&}__list {
+        display: block;
+        margin-bottom: calculateRem(40px);
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @at-root #{&}__item {
+        display: block;
+        margin-bottom: calculateRem(24px);
+
+        @at-root #{&}--auth {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    @at-root #{&}__link {
+        @include transition-color;
+
+        display: inline-block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 800;
+        text-transform: uppercase;
+        color: $color-white;
+        background-color: transparent;
+        cursor: pointer;
+        border: 0;
+        padding: 0;
+
+        &:hover {
+            color: rgba($color-white, 0.8);
+        }
+
+        @at-root #{&}--yellow {
+            color: $color-yellow;
+
+            &:hover {
+                color: rgba($color-yellow, 0.8);
+            }
+        }
+
+        #{$root}__item--auth & {
+            &:not(:last-child) {
+                &:after {
+                    display: inline-block;
+                    font-size: calculateRem(24px);
+                    line-height: calculateRem(32px);
+                    font-weight: 700;
+                    color: $color-white;
+                    content: '/';
+                    margin-left: calculateRem(6px);
+                    margin-right: calculateRem(7px);
+                }
+            }
+        }
+    }
+
+    @at-root #{&}__sub {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: calculateRem(52px);
+        bottom: 0;
+        right: -100%;
+        opacity: 0;
+        transition: opacity 0.2s ease-out, right 0.4s cubic-bezier(0, 0, .2, 1);
+        background-color: $color-dark-purple;
+        z-index: 1;
+        overflow-y: auto;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+
+        @at-root #{&}--active {
+            right: 0;
+            opacity: 1;
+        }
+    }
+
+    @at-root #{&}__container {
+        @include container;
+    }
+
+    @at-root #{&}__back {
+        position: relative;
+        display: inline-block;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 800;
+        text-transform: uppercase;
+        color: $color-white;
+        background-color: transparent;
+        cursor: pointer;
+        border: 0;
+        padding: 0 0 0 calculateRem(32px);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:before {
+            @include backgroundImage;
+
+            position: absolute;
+            display: inline-block;
+            width: calculateRem(18px);
+            height: calculateRem(18px);
+            top: calc(50% - #{calculateRem(9px)});
+            left: 0;
+            background-image: url('../../images/icons/icon-arrow-back.svg');
+            content: "";
+        }
+    }
+}

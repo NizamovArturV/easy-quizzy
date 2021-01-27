@@ -1,0 +1,324 @@
+.table-rating {
+    $root: &;
+
+    position: relative;
+    display: block;
+    //counter-reset: number;
+
+    & > :last-child {
+        margin-bottom: 0;
+    }
+
+    @at-root #{&}__heading {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $color-purple;
+        padding: calculateRem(24px) calculateRem(64px);
+        margin-bottom: calculateRem(8px);
+
+        @include min-tablet {
+            &:after {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: calculateRem(8px);
+                left: 0;
+                right: 0;
+                bottom: calculateRem(-8px);
+                content: '';
+                background-color: $color-dark-purple;
+            }
+        }
+
+        @include desktop {
+            padding: calculateRem(24px) calculateRem(48px);
+        }
+
+        @include desktop-small {
+            padding: calculateRem(20px) calculateRem(44px);
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__row {
+        display: flex;
+        padding: calculateRem(24px) calculateRem(64px);
+        background-color: $color-white;
+        margin-bottom: calculateRem(8px);
+        //counter-increment: number;
+        @include desktop {
+            padding: calculateRem(24px) calculateRem(48px);
+        }
+
+        @include desktop-small {
+            padding: calculateRem(20px) calculateRem(44px);
+        }
+
+        @include min-tablet {
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @include tablet {
+            position: relative;
+            flex-wrap: wrap;
+            padding: calculateRem(20px) calculateRem(32px);
+
+            //&:after {
+            //    position: absolute;
+            //    display: inline-block;
+            //    vertical-align: middle;
+            //    top: calculateRem(16px);
+            //    right: calculateRem(16px);
+            //    font-size: calculateRem(24px);
+            //    line-height: calculateRem(32px);
+            //    color: rgba($color-black-base, 0.7);
+            //    font-weight: 800;
+            //    content: counter(number, decimal-leading-zero);
+            //}
+        }
+
+        @include mobile {
+            padding: calculateRem(16px);
+        }
+    }
+
+    @at-root #{&}__col {
+        @include min-tablet {
+            display: flex;
+            align-items: center;
+
+            &:nth-child(1) {
+                width: 40%;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                width: 10%;
+                justify-content: flex-end;
+            }
+
+            &:nth-child(4) {
+                width: 20%;
+            }
+        }
+
+        @include tablet {
+            &:nth-child(1) {
+                width: 100%;
+                margin-bottom: calculateRem(16px);
+            }
+
+            &:nth-child(2) {
+                margin-right: calculateRem(60px);
+            }
+
+            &:nth-child(4) {
+                display: none;
+            }
+        }
+    }
+
+    @at-root #{&}__pos {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        color: rgba($color-black-base, 0.5);
+        font-weight: 800;
+        content: counter(number, decimal-leading-zero);
+        margin-right: calculateRem(32px);
+
+        @include desktop {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            margin-right: calculateRem(24px);
+        }
+
+        @include desktop-small {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+            margin-right: calculateRem(20px);
+        }
+
+        @include tablet {
+            position: absolute;
+            top: calculateRem(16px);
+            right: calculateRem(16px);
+            font-size: calculateRem(24px);
+            line-height: calculateRem(32px);
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__caption {
+
+        @include min-tablet {
+            display: none;
+        }
+
+        @include tablet {
+            display: block;
+            font-size: calculateRem(16px);
+            line-height: calculateRem(20px);
+            font-weight: 700;
+            color: rgba($color-black-base, 0.7);
+
+            &:first-child {
+                margin-bottom: calculateRem(2px);
+            }
+
+            #{$root}__col:first-child & {
+                color: $color-purple;
+            }
+        }
+    }
+
+    @at-root #{&}__text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 800;
+
+        &:after {
+            display: inline-block;
+            vertical-align: middle;
+            width: calculateRem(17px);
+            height: calculateRem(38px);
+            background-image: url('../../images/icons/icon-lightning-rules.svg');
+            background-repeat: repeat;
+            background-size: contain;
+            background-position: left center;
+            margin-left: calculateRem(8px);
+        }
+
+        &[data-rank="1"] {
+            &:after {
+                content: '';
+                width: calculateRem(17px);
+            }
+        }
+
+        &[data-rank="2"] {
+            &:after {
+                content: '';
+                width: calculateRem(34px);
+            }
+        }
+
+        &[data-rank="3"] {
+            &:after {
+                content: '';
+                width: calculateRem(51px);
+            }
+        }
+
+        @include desktop-only {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+        }
+
+        @include desktop-small-only {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+        }
+
+        #{$root}__heading & {
+            color: $color-white;
+        }
+
+        @include tablet {
+            line-height: calculateRem(28px);
+            font-weight: 700;
+
+            #{$root}__col:first-child & {
+                padding-right: calculateRem(52px);
+
+                &:not(:last-child) {
+                    margin-bottom: calculateRem(2px);
+                }
+            }
+        }
+    }
+
+    @at-root #{&}__number {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: calculateRem(40px);
+        line-height: 1;
+        font-weight: 800;
+
+        @include desktop-only {
+            font-size: calculateRem(32px);
+        }
+
+        @include desktop-small-only {
+            font-size: calculateRem(24px);
+        }
+
+        @include tablet {
+            font-size: calculateRem(32px);
+        }
+    }
+
+    @at-root #{&}__sort {
+        position: relative;
+        display: inline-block;
+        padding: 0 0 0 calculateRem(24px);
+        border: 0;
+        background-color: transparent;
+        font-size: calculateRem(24px);
+        line-height: calculateRem(32px);
+        font-weight: 700;
+        color: $color-white;
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            left: 0;
+            top: calc(50% - #{calculateRem(6px)});
+            border-style: solid;
+            border-width: 12px 8px 0 8px;
+            border-color: $color-white transparent transparent transparent;
+            content: '';
+            transition: transform 0.2s ease-out;
+
+            @include desktop {
+                top: calc(50% - #{calculateRem(5px)});
+                border-width: 10px 7px 0 7px;
+            }
+        }
+
+        @include desktop {
+            font-size: calculateRem(20px);
+            line-height: calculateRem(28px);
+            padding-left: calculateRem(20px);
+        }
+
+        @include desktop-small {
+            font-size: calculateRem(18px);
+            line-height: calculateRem(26px);
+        }
+
+        @at-root #{&}--reverse {
+            &:before {
+                transform: rotate(180deg);
+            }
+        }
+
+        @at-root #{&}--active {
+            &:before {
+                border-color: $color-yellow transparent transparent transparent;
+            }
+        }
+    }
+}

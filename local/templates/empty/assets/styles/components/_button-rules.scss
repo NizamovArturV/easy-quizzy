@@ -1,0 +1,83 @@
+.button-rules {
+    position: relative;
+    display: inline-block;
+    width: calculateRem(196px);
+    height: calculateRem(196px);
+    border-radius: 50%;
+    background-color: $color-pink;
+    z-index: 1;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:before {
+        position: absolute;
+        display: block;
+        top: calculateRem(20px);
+        right: calculateRem(20px);
+        bottom: calculateRem(20px);
+        left: calculateRem(20px);
+        width: calc(100% - #{calculateRem(40px)});
+        height: calc(100% - #{calculateRem(40px)});
+        content: '';
+        background: url('../../images/icons/icon-circle-text.svg') no-repeat center center;
+        background-size: cover;
+        transform: rotate(0);
+        animation: rotateAnimation 10s linear infinite;
+
+        @include tablet {
+            top: calculateRem(18px);
+            right: calculateRem(18px);
+            bottom: calculateRem(18px);
+            left: calculateRem(18px);
+            width: calc(100% - #{calculateRem(36px)});
+            height: calc(100% - #{calculateRem(36px)});
+        }
+
+        @include mobile {
+            top: calculateRem(14px);
+            right: calculateRem(14px);
+            bottom: calculateRem(14px);
+            left: calculateRem(14px);
+            width: calc(100% - #{calculateRem(28px)});
+            height: calc(100% - #{calculateRem(28px)});
+        }
+    }
+
+    &:after {
+        position: absolute;
+        display: block;
+        width: calculateRem(44px);
+        height: calculateRem(44px);
+        content: '';
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: url('../../images/icons/icon-key.svg') no-repeat center center;
+        background-size: cover;
+    }
+
+    @include tablet {
+        width: calculateRem(148px);
+        height: calculateRem(148px);
+    }
+
+    @include mobile {
+        width: calculateRem(124px);
+        height: calculateRem(124px);
+    }
+
+    @keyframes rotateAnimation {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

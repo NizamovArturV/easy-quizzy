@@ -1,0 +1,236 @@
+.header {
+    $root: &;
+
+    position: relative;
+    display: block;
+    z-index: 2;
+
+    @at-root #{&}__desktop {
+        @include tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__mobile {
+        background-color: $color-black-base;
+
+        @include min-tablet {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__top {
+        display: block;
+        box-shadow: 0 4px 10px rgba(28, 16, 56, 0.32);
+        background-color: $color-black-base;
+    }
+
+    @at-root #{&}__bottom {
+        padding-top: calculateRem(24px);
+    }
+
+    @at-root #{&}__inner {
+        @include container;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @at-root #{&}__dropdown {
+        display: inline-block;
+        margin-right: calculateRem(16px);
+    }
+
+    @at-root #{&}__link {
+        @include transition-color;
+
+        display: inline-block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(23px);
+        font-weight: 700;
+        color: $color-white;
+
+        &:hover {
+            color: rgba($color-white, 0.8);
+        }
+
+        #{$root}__nav & {
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: $color-black-base;
+
+            @at-root .page-main & {
+                color: $color-white;
+            }
+
+            @at-root .page-purple & {
+                color: $color-white;
+            }
+        }
+
+        #{$root}__auth & {
+            &:not(:last-child) {
+                &:after {
+                    display: inline;
+                    font-size: calculateRem(16px);
+                    line-height: calculateRem(23px);
+                    content: '/';
+                    color: $color-white;
+                    font-weight: 600;
+                    margin-left: calculateRem(4px);
+                    margin-right: calculateRem(5px);
+                }
+            }
+        }
+    }
+
+    @at-root #{&}__profile {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    @at-root #{&}__auth {
+        display: flex;
+        align-items: center;
+    }
+
+    @at-root #{&}__name {
+        @include transition-color;
+
+        display: inline-block;
+        font-size: calculateRem(16px);
+        line-height: calculateRem(22px);
+        font-weight: 700;
+        color: $color-white;
+
+        &:hover {
+            color: rgba($color-white, 0.8);
+        }
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            content: '';
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    @at-root #{&}__icon {
+        display: block;
+        width: calculateRem(30px);
+        height: calculateRem(30px);
+        background-image: url('../../images/icons/icon-header-user.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-radius: 50%;
+        margin-right: calculateRem(16px);
+    }
+
+    @at-root #{&}__logo {
+        #{$root}__desktop & {
+            display: block;
+            width: calculateRem(180px);
+            height: calculateRem(100px);
+            background-image: url("../../images/icons/icon-logo-colored.svg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+
+            @at-root .page-main & {
+                background-image: url("../../images/icons/icon-logo.svg");
+            }
+
+            @at-root .page-purple & {
+                background-image: url("../../images/icons/icon-logo.svg");
+            }
+        }
+
+        #{$root}__mobile & {
+            position: relative;
+            display: block;
+            width: calculateRem(52px);
+            height: calculateRem(54px);
+            margin-left: calculateRem(-8px);
+            margin-right: calculateRem(8px);
+
+            &:after {
+                position: absolute;
+                display: block;
+                width: calculateRem(42px);
+                height: calculateRem(42px);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                content: '';
+                background-image: url('../../images/icons/icon-logo-mobile.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+        }
+    }
+
+    @at-root #{&}__nav {
+        display: flex;
+        align-items: center;
+
+        & > :last-child {
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__menu {
+        display: flex;
+        align-items: center;
+        margin-right: calculateRem(24px);
+
+        & > :last-child {
+            margin-right: 0;
+        }
+    }
+
+    @at-root #{&}__item {
+        display: inline-block;
+        margin-right: calculateRem(24px);
+    }
+
+    @at-root #{&}__cities {
+        position: relative;
+        display: inline-block;
+        border: 0;
+        padding: 0 calculateRem(20px) 0 calculateRem(4px);
+        font-size: calculateRem(16px);
+        height: calculateRem(50px);
+        line-height: calculateRem(50px);
+        background-color: transparent;
+        color: $color-white;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: left;
+
+        &:after {
+            position: absolute;
+            display: block;
+            width: calculateRem(10px);
+            height: calculateRem(10px);
+            right: calculateRem(4px);
+            top: calc(50% - #{calculateRem(5px)});
+            background: url('../../images/icons/icon-dropdown-arrow-white.svg') no-repeat center center;
+            background-size: contain;
+            content: '';
+        }
+    }
+
+    @at-root #{&}__side {
+        display: flex;
+        align-items: center;
+    }
+}

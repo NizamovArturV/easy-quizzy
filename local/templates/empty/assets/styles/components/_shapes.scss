@@ -1,0 +1,669 @@
+.shapes {
+    $root: &;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+
+    @at-root #{&}--info {
+        opacity: 0.4;
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    @at-root #{&}--rating {
+        opacity: 0.4;
+
+        @include tablet-small {
+            display: none;
+        }
+    }
+
+    @at-root #{&}__shape {
+        position: absolute;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        pointer-events: none;
+
+        #{$root}--intro & {
+            z-index: 1;
+
+            &:nth-child(1) {
+                background-image: url('../../images/icons/shape-strp-circle.svg');
+                width: calculateRem(320px);
+                height: calculateRem(252px);
+                left: calculateRem(-120px);
+                top: calculateRem(-40px);
+
+                @include from-to($desktop-large, $tablet) {
+                    left: calculateRem(-260px);
+                }
+
+                @include tablet {
+                    top: calculateRem(-20px);
+                    width: calculateRem(220px);
+                    height: calculateRem(176px);
+                }
+
+                @include mobile {
+                    width: calculateRem(150px);
+                    height: calculateRem(120px);
+                    left: calculateRem(-60px);
+                }
+            }
+
+            &:nth-child(2) {
+                background-image: url('../../images/icons/shape-cross.svg');
+                width: calculateRem(24px);
+                height: calculateRem(24px);
+                left: 15%;
+                top: 20%;
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                    top: 52%;
+                    left: 8%;
+                }
+
+                @include mobile {
+                    width: calculateRem(12px);
+                    height: calculateRem(12px);
+                }
+            }
+
+            &:nth-child(3) {
+                @include min-tablet {
+                    background-image: url('../../images/icons/shape-circle-white.svg');
+                    width: calculateRem(30px);
+                    height: calculateRem(30px);
+                    top: 15%;
+                    left: 36%;
+                }
+            }
+
+            &:nth-child(4) {
+                background-image: url('../../images/icons/shape-wave-white.svg');
+                width: calculateRem(140px);
+                height: calculateRem(118px);
+
+
+                @include desktop-small {
+                    width: calculateRem(100px);
+                    height: calculateRem(84px);
+                }
+
+                @include min-tablet {
+                    top: 20%;
+                    right: 16%;
+                }
+
+                @include tablet {
+                    right: 4%;
+                    bottom: 12%;
+                }
+
+                @include mobile {
+                    right: -5%;
+                }
+            }
+
+            &:nth-child(5) {
+                @include min-desktop-small {
+                    width: calculateRem(80px);
+                    height: calculateRem(40px);
+                }
+
+                @include desktop-small-only {
+                    width: calculateRem(60px);
+                    height: calculateRem(30px);
+                }
+
+                @include min-tablet {
+                    background-image: url('../../images/icons/shape-triangle-white.svg');
+                    right: 4%;
+                    top: 16%;
+                }
+            }
+
+            &:nth-child(6) {
+                background-image: url('../../images/icons/shape-cross-blue.svg');
+                width: calculateRem(24px);
+                height: calculateRem(24px);
+
+                @include min-tablet {
+                    top: 45%;
+                    right: 12%;
+                }
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                    bottom: 14%;
+                    right: 38%;
+                }
+
+                @include mobile {
+                    width: calculateRem(12px);
+                    height: calculateRem(12px);
+                    right: 45%;
+                }
+            }
+
+            &:nth-child(7) {
+                background-image: url('../../images/icons/shpae-circle-half-yellow.svg');
+                width: calculateRem(65px);
+                height: calculateRem(134px);
+                right: 14%;
+                bottom: 16%;
+                transform: rotate(-90deg);
+
+                @include tablet {
+                    width: calculateRem(40px);
+                    height: calculateRem(82px);
+                    right: -2%;
+                    bottom: 38%;
+                }
+
+                @include mobile {
+                    width: calculateRem(30px);
+                    height: calculateRem(64px);
+                }
+            }
+
+            &:nth-child(8) {
+                @include min-tablet {
+                    background-image: url('../../images/icons/shape-circle-blue.svg');
+                    width: calculateRem(35px);
+                    height: calculateRem(35px);
+                    right: 4%;
+                    bottom: 12%;
+                }
+            }
+
+            &:nth-child(9) {
+                background-image: url('../../images/icons/shape-triangle-dots-yellow.svg');
+                width: calculateRem(232px);
+                height: calculateRem(120px);
+                right: 12%;
+                bottom: calculateRem(4px);
+
+                @include tablet {
+                    width: calculateRem(156px);
+                    height: calculateRem(80px);
+                    right: 8%;
+                }
+
+                @include mobile {
+                    width: calculateRem(132px);
+                    height: calculateRem(68px);
+                }
+            }
+
+            &:nth-child(10) {
+                background-image: url('../../images/icons/shape-strip-blue.svg');
+                width: calculateRem(266px);
+                height: calculateRem(10px);
+                right: 3%;
+                bottom: 4%;
+
+                @include tablet {
+                    height: calculateRem(8px);
+                    width: calculateRem(206px);
+                    right: -10%;
+                }
+
+                @include mobile {
+                    height: calculateRem(5px);
+                    width: calculateRem(128px);
+                }
+            }
+
+            &:nth-child(11) {
+                background-image: url('../../images/icons/shape-triangles-white.svg');
+                width: calculateRem(100px);
+                height: calculateRem(100px);
+                left: 30%;
+                bottom: calculateRem(4px);
+
+                @include desktop-small {
+                    width: calculateRem(80px);
+                    height: calculateRem(80px);
+                }
+
+                @include tablet {
+                    left: 6%;
+                    bottom: 4%;
+                    width: calculateRem(60px);
+                    height: calculateRem(60px);
+                }
+
+                @include mobile {
+                    width: calculateRem(48px);
+                    height: calculateRem(48px);
+                }
+            }
+
+            &:nth-child(12) {
+                background-image: url('../../images/icons/shape-cross.svg');
+                width: calculateRem(24px);
+                height: calculateRem(24px);
+
+                @include min-tablet {
+                    bottom: 25%;
+                    left: 18%;
+                }
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                    top: 20%;
+                    right: 8%;
+                }
+
+                @include mobile {
+                    width: calculateRem(12px);
+                    height: calculateRem(12px);
+                }
+            }
+
+            &:nth-child(13) {
+                background-image: url('../../images/icons/shpae-circle-half-yellow.svg');
+                width: calculateRem(65px);
+                height: calculateRem(134px);
+                left: 4%;
+                bottom: 8%;
+
+                @include tablet {
+                    width: calculateRem(40px);
+                    height: calculateRem(82px);
+                    bottom: 50%;
+                    left: calculateRem(-16px);
+                }
+
+                @include mobile {
+                    width: calculateRem(30px);
+                    height: calculateRem(64px);
+                }
+            }
+
+            &:nth-child(14) {
+                @include min-desktop-medium {
+                    left: 10%;
+                }
+
+                @include desktop-medium {
+                    left: calculateRem(-80px);
+                }
+
+                @include min-tablet {
+                    background-image: url('../../images/icons/shape-waves-blue.svg');
+                    width: calculateRem(256px);
+                    height: calculateRem(50px);
+                    bottom: 40%;
+                }
+            }
+
+            &:nth-child(15) {
+                @include min-desktop-large {
+                    background-image: url('../../images/icons/shape-strip-yellow.svg');
+                    width: calculateRem(266px);
+                    height: calculateRem(10px);
+                    top: 40%;
+                    left: calculateRem(-32px);
+                }
+            }
+        }
+
+        #{$root}--info & {
+
+            &:nth-child(1) {
+                background-image: url('../../images/icons/shape-triangles-dot-yellow-rotate.svg');
+                height: calculateRem(382px);
+                width: calculateRem(194px);
+                left: 0;
+                top: 5%;
+            }
+
+            &:nth-child(2) {
+                background-image: url('../../images/icons/shape-group-1.svg');
+                height: calculateRem(386px);
+                width: calculateRem(266px);
+                left: 0;
+                top: 17.5%;
+            }
+
+            &:nth-child(3) {
+                background-image: url('../../images/icons/shape-group-2.svg');
+                height: calculateRem(332px);
+                width: calculateRem(186px);
+                left: 0;
+                top: 40%;
+            }
+
+            &:nth-child(4) {
+                background-image: url('../../images/icons/shape-group-3.svg');
+                height: calculateRem(446px);
+                width: calculateRem(330px);
+                left: calculateRem(-165px);
+                bottom: 20%;
+            }
+
+            &:nth-child(5) {
+                background-image: url('../../images/icons/shape-group-4.svg');
+                height: calculateRem(260px);
+                width: calculateRem(166px);
+                top: 8%;
+                right: 0;
+            }
+
+            &:nth-child(6) {
+                background-image: url('../../images/icons/shape-group-5.svg');
+                height: calculateRem(128px);
+                width: calculateRem(346px);
+                top: 32%;
+                right: calculateRem(-170px);
+            }
+
+            &:nth-child(7) {
+                background-image: url('../../images/icons/shape-group-6.svg');
+                height: calculateRem(348px);
+                width: calculateRem(322px);
+                top: 40%;
+                right: calculateRem(-100px);
+            }
+
+            &:nth-child(8) {
+                background-image: url('../../images/icons/shape-group-7.svg');
+                height: calculateRem(294px);
+                width: calculateRem(262px);
+                bottom: 20%;
+                right: 0;
+            }
+        }
+
+        #{$root}--rating & {
+            &:nth-child(1) {
+                background-image: url('../../images/icons/shape-group-13.svg');
+                height: calculateRem(402px);
+                width: calculateRem(316px);
+                left: 0;
+                top: 0;
+
+                @include desktop-large {
+                    left: calculateRem(-80px);
+                }
+
+                @include tablet {
+                    width: calculateRem(158px);
+                    height: calculateRem(200px);
+                    left: 0;
+                }
+            }
+
+            &:nth-child(2) {
+                background-image: url('../../images/icons/shape-group-14.svg');
+                height: calculateRem(102px);
+                width: calculateRem(325px);
+                left: calculateRem(-64px);
+                bottom: calculateRem(112px);
+
+                @include tablet {
+                    width: calculateRem(228px);
+                    height: calculateRem(72px);
+                }
+            }
+
+            &:nth-child(3) {
+                background-image: url('../../images/icons/shape-group-15.svg');
+                height: calculateRem(260px);
+                width: calculateRem(227px);
+                top: calculateRem(80px);
+                right: calculateRem(-32px);
+
+                @include tablet {
+                    top: calculateRem(32px);
+                    width: calculateRem(205px);
+                    height: calculateRem(180px);
+                }
+            }
+
+            &:nth-child(4) {
+                background-image: url('../../images/icons/shape-group-16.svg');
+                height: calculateRem(242px);
+                width: calculateRem(245px);
+                right: 0;
+                bottom: calculateRem(8px);
+
+                @include tablet {
+                    width: calculateRem(180px);
+                    height: calculateRem(182px);
+                }
+            }
+        }
+
+        #{$root}--not-found & {
+            &:nth-child(1) {
+                background-image: url('../../images/icons/shape-strp-circle.svg');
+                width: calculateRem(320px);
+                height: calculateRem(254px);
+
+                @include min-desktop-large {
+                    top: calculateRem(-40px);
+                    left: calculateRem(-64px);
+                }
+
+                @include from-to($desktop-large, $tablet) {
+                    top: calculateRem(-40px);
+                    left: calculateRem(-240px);
+                }
+
+                @include tablet {
+                    width: calculateRem(164px);
+                    height: calculateRem(130px);
+                    left: calculateRem(-80px);
+                    top: calculateRem(-20px);
+                }
+
+                @include mobile {
+                    left: calculateRem(-120px);
+                }
+            }
+
+            &:nth-child(2) {
+                background-image: url('../../images/icons/shape-cross.svg');
+                width: calculateRem(24px);
+                height: calculateRem(24px);
+                left: 15%;
+                top: 38%;
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                    top: 28%;
+                    left: 20%;
+                }
+
+                @include mobile {
+                    width: calculateRem(12px);
+                    height: calculateRem(12px);
+                    top: 20%;
+                    left: 25%;
+                }
+            }
+
+            &:nth-child(3) {
+                background-image: url('../../images/icons/shape-circle-white.svg');
+                width: calculateRem(30px);
+                height: calculateRem(30px);
+                left: 32%;
+                top: 28%;
+
+                @include tablet {
+                    top: 15%;
+                    left: 30%;
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                }
+
+                @include mobile {
+                    top: 5%;
+                    left: 38%;
+                }
+            }
+
+            &:nth-child(4) {
+                background-image: url('../../images/icons/shape-wave-white.svg');
+                width: calculateRem(140px);
+                height: calculateRem(118px);
+                right: 12%;
+                top: 25%;
+
+                @include desktop-small {
+                    top: 34%;
+                    right: 18%;
+                    width: calculateRem(100px);
+                    height: calculateRem(84px);
+                }
+
+                @include tablet {
+                    top: 55%;
+                    right: calculateRem(-50px);
+                }
+            }
+
+            &:nth-child(5) {
+                background-image: url('../../images/icons/shape-triangle-white.svg');
+                width: calculateRem(80px);
+                height: calculateRem(40px);
+                right: 6%;
+                top: 15%;
+                transform: rotate(180deg);
+
+                @include tablet {
+                    width: calculateRem(60px);
+                    height: calculateRem(30px);
+                    right: calculateRem(-12px);
+                    top: 10%;
+                }
+            }
+
+            &:nth-child(6) {
+                background-image: url('../../images/icons/shape-cross-blue.svg');
+                width: calculateRem(24px);
+                height: calculateRem(24px);
+                right: 4%;
+                top: 45%;
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                    top: 40%;
+                    right: 12%;
+                }
+
+                @include mobile {
+                    right: 6%;
+                    top: 30%;
+                }
+            }
+
+            &:nth-child(7) {
+                @include min-tablet {
+                    background-image: url('../../images/icons/shpae-circle-half-yellow.svg');
+                    width: calculateRem(65px);
+                    height: calculateRem(134px);
+                    right: 10%;
+                    bottom: 25%;
+                    transform: rotate(-90deg);
+                }
+            }
+
+            &:nth-child(8) {
+                background-image: url('../../images/icons/shape-circle-blue.svg');
+                width: calculateRem(30px);
+                height: calculateRem(30px);
+                bottom: 10%;
+                right: calculateRem(40px);
+
+                @include tablet {
+                    width: calculateRem(20px);
+                    height: calculateRem(20px);
+                }
+
+                @include tablet-small {
+                    display: none;
+                }
+            }
+
+            &:nth-child(9) {
+                background-image: url('../../images/icons/shape-triangle-dots-yellow.svg');
+                width: calculateRem(232px);
+                height: calculateRem(120px);
+                bottom: calculateRem(-44px);
+                right: 10%;
+
+                @include tablet {
+                    width: calculateRem(156px);
+                    height: calculateRem(80px);
+                    bottom: calculateRem(-28px);
+                }
+
+                @include mobile {
+                    width: calculateRem(132px);
+                    height: calculateRem(68px);
+                    bottom: calculateRem(-34px);
+                }
+            }
+
+            &:nth-child(10) {
+                background-image: url('../../images/icons/shape-group-12.svg');
+                width: calculateRem(410px);
+                height: calculateRem(154px);
+                left: 4%;
+                bottom: calculateRem(8px);
+
+                @include desktop-medium {
+                    width: calculateRem(260px);
+                    height: calculateRem(98px);
+                }
+
+                @include desktop {
+                    left: calculateRem(-100px);
+                }
+
+                @include tablet-small {
+                    display: none;
+                }
+            }
+
+            &:nth-child(11) {
+                background-image: url('../../images/icons/shape-waves-blue.svg');
+                width: calculateRem(256px);
+                height: calculateRem(50px);
+                bottom: 38%;
+                left: 8%;
+
+                @include desktop {
+                    width: calculateRem(180px);
+                    height: calculateRem(35px);
+                }
+
+                @include tablet {
+                    left: calculateRem(-80px);
+                }
+
+                @include mobile {
+                    left: calculateRem(-120px);
+                }
+            }
+        }
+    }
+}
