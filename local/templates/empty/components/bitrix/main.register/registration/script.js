@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded", () => {    let regform = document.getElementById('regform');    regform.addEventListener('submit', function (e) {        let loginInput = document.getElementById('loginInput');        let emailInput =  document.getElementById('emailInput').value;        loginInput.value = emailInput;    });});

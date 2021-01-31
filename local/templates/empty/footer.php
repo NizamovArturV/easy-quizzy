@@ -12,13 +12,13 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <nav class="footer__nav" role="navigation">
                     <ul class="footer__list" role="menu">
                         <li class="footer__item" role="menuitem">
-                            <a href="#!" class="footer__link">Расписание</a>
+                            <a href="/shedule" class="footer__link">Расписание</a>
                         </li>
                         <li class="footer__item" role="menuitem">
-                            <a href="#!" class="footer__link">Рейтинг команд</a>
+                            <a href="/rating" class="footer__link">Рейтинг команд</a>
                         </li>
                         <li class="footer__item" role="menuitem">
-                            <a href="#!" class="footer__link">Личный кабинет</a>
+                            <a href="/profile" class="footer__link">Личный кабинет</a>
                         </li>
                     </ul>
                 </nav>
@@ -68,13 +68,13 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
         <div class="menu-mobile__body">
             <ul class="menu-mobile__list">
                 <li class="menu-mobile__item">
-                    <a href="#!" class="menu-mobile__link">Личный кабинет</a>
+                    <a href="/profile" class="menu-mobile__link">Личный кабинет</a>
                 </li>
                 <li class="menu-mobile__item">
-                    <a href="#!" class="menu-mobile__link">Расписание</a>
+                    <a href="/shedule" class="menu-mobile__link">Расписание</a>
                 </li>
                 <li class="menu-mobile__item">
-                    <a href="#!" class="menu-mobile__link">Рейтинг команд</a>
+                    <a href="/rating" class="menu-mobile__link">Рейтинг команд</a>
                 </li>
                 <li class="menu-mobile__item">
                     <a href="tel:+79872334116" class="menu-mobile__link menu-mobile__link--yellow">+7 (987)

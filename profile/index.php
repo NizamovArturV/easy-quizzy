@@ -1,19 +1,14 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Линый кабинет");
+$APPLICATION->SetTitle("Личный кабинет");
+If (!$USER->IsAuthorized()){
+        LocalRedirect("/");
+}
 ?>
-<?$APPLICATION->IncludeComponent(
-    "bitrix:main.profile",
-    "",
-    Array(
-        "CHECK_RIGHTS" => "N",
-        "SEND_INFO" => "N",
-        "SET_TITLE" => "N",
-        "USER_PROPERTY" => array(),
-        "USER_PROPERTY_NAME" => ""
-    )
-);?>
+
+
     <div class="wrap">
+
         <div class="profile">
             <div class="profile__top">
                 <div class="heading">
@@ -27,14 +22,14 @@ $APPLICATION->SetTitle("Линый кабинет");
                     <div class="profile-side">
                         <div class="profile-side__top">
                             <div class="profile-side__avatar">
-                                <img src="<?=SITE_TEMPLATE_PATH?>/build/images/avatar-1.jpg" class="profile-side__img" alt="avatar">
+                                <img src="<?=$arUser['PERSONAL_PHOTO'] > 0 ? CFile::GetPath($arUser['PERSONAL_PHOTO']) : SITE_TEMPLATE_PATH . '/img/profile-stand.png'?>" class="profile-side__img" alt="avatar">
                             </div>
                         </div>
                         <div class="profile-side__body">
                             <div class="profile-side__info">
-                                <p class="profile-side__name">Андрей Александров</p>
-                                <p class="profile-side__contact">andrey-86@gmail.com</p>
-                                <p class="profile-side__contact">+7 (917) 414-55-01</p>
+                                <p class="profile-side__name"><?=$USER->GetFirstName() . ' ' . $USER->GetLastName()?></p>
+                                <p class="profile-side__contact"><?=$USER->GetEmail()?></p>
+                                <p class="profile-side__contact"><?=$arUser['PERSONAL_PHONE']?></p>
                             </div>
                             <a href="/editing" class="button button--fit">
                                 <span class="button__text">Редактировать</span>
@@ -42,407 +37,144 @@ $APPLICATION->SetTitle("Линый кабинет");
                         </div>
                     </div>
                 </div>
-                <div class="profile__base">
-                    <div class="profile__board">
-                        <div class="board" data-rank="3">
-                            <div class="board__inner">
-                                <div class="board__heading">
-                                    <p class="board__name">Крадущийся тигр, затаившийся дракон</p>
-                                    <p class="board__status">Знатоки</p>
-                                </div>
-                                <div class="board__stats">
-                                    <div class="board__stat">
-                                        <div class="board__item">
-                                            <p class="board__point">14</p>
-                                            <p class="board__caption">игр</p>
-                                        </div>
-                                    </div>
-                                    <div class="board__stat">
-                                        <div class="board__item">
-                                            <p class="board__point">684</p>
-                                            <p class="board__caption">баллов</p>
-                                        </div>
-                                    </div>
-                                    <div class="board__stat">
-                                        <div class="board__item">
-                                            <p class="board__point">1</p>
-                                            <p class="board__caption">место</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile__team">
-                        <form class="team">
-                            <div class="team__heading">
-                                <p class="team__title">Состав</p>
-                            </div>
-                            <button type="button" class="team__collapse">Состав</button>
-                            <div class="team__list">
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Андрей Александров</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Евгений Елизарьев</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Алина Габдрахманова</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option">Редактировать</button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Иван Боровых</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Дмитрий Кичев</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Юлия Касьянова</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Игорь Васильев</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Александра Чернова</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="team__item" tabindex="0">
-                                    <div class="team__player">
-                                        <p class="team__name">Константин Красильников</p>
-                                    </div>
-                                    <div class="team__buttons">
-                                        <button type="button" class="team__button team__button--add"
-                                                data-modal="modalAdding"></button>
-                                        <button type="submit" class="team__button team__button--remove"></button>
-                                    </div>
-                                    <div class="team__options">
-                                        <button class="team__dots" type="button"></button>
-                                        <div class="team__plank">
-                                            <button type="button" class="team__option" data-modal="modalAdding">
-                                                Редактировать
-                                            </button>
-                                            <button type="submit" class="team__option">Удалить</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="team__add" data-modal="modalAdding">Добавить игрока
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"team-profile", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "N",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "4",
+		"IBLOCK_TYPE" => "index",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(
+			0 => "TEAM_LEAD",
+			1 => "COUNT_LIGHT",
+			2 => "TEAM_RANG",
+			3 => "TEAM_PARTICIPANTS",
+			4 => "",
+		),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_META_KEYWORDS" => "N",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "N",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => "team-profile"
+	),
+	false
+);?>
             </div>
-            <div class="profile__block">
-                <div class="profile__base">
-                    <div class="profile__games">
-                        <div class="team__games">
-                            <div class="table-games">
-                                <div class="table-games__heading">
-                                    <div class="table-games__col">
-                                        <p class="table-games__text">Игра</p>
-                                    </div>
-                                    <div class="table-games__col">
-                                        <p class="table-games__text">Дата</p>
-                                    </div>
-                                    <div class="table-games__col">
-                                        <p class="table-games__text">Место</p>
-                                    </div>
-                                    <div class="table-games__col">
-                                        <p class="table-games__text">Баллы</p>
-                                    </div>
-                                </div>
-                                <div class="table-games__collapse">Статистика</div>
-                                <div class="table-games__list">
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Вселенная DC</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="29.12.2018">29.12.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">5</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">84</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Easy Quizee Classic #23</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="22.12.2018">22.12.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">1</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">170</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Игромания</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="15.12.2018">15.12.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">4</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">77</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Easy Quizee Classic #21</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="10.12.2018">10.12.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">3</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">125</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Easy Quizee Classic #16</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="01.12.2018">01.12.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">6</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">65</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Marvel</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="25.11.2018">25.11.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">5</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">54</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Сериалы</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="18.11.2018">18.11.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">4</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">87</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Easy Quizee Classic #12</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="12.11.2018">12.11.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">3</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">146</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Игромания</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="07.11.2018">07.11.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">9</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">32</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-games__row">
-                                        <div class="table-games__col">
-                                            <p class="table-games__text">Easy Quizee Classic #10</p>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <time class="table-games__date" datetime="01.11.2018">01.11.2018</time>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">8</p>
-                                            <span class="table-games__caption">место</span>
-                                        </div>
-                                        <div class="table-games__col">
-                                            <p class="table-games__number">41</p>
-                                            <span class="table-games__caption">баллы</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "team-rating-full",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "COMPONENT_TEMPLATE" => "team-rating",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "Y",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => [
+                        0 => "",
+                        1 => "",
+                    ],
+                    "FILTER_NAME" => "",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "5",
+                    "IBLOCK_TYPE" => "index",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => [
+                        0 => "TEAM_NUM",
+                        1 => "POINT",
+                        2 => "GAME_ID",
+                        3 => "CURRENT_TEAM",
+                        4 => "",
+                    ],
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "TIMESTAMP_X",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N"
+                ],
+                false
+            ); ?>
         </div>
     </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -1,24 +1,25 @@
 <?
-if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
-	die();
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+    die();
+    $arUser = CUser::GetByID($USER->GetID())->Fetch();
 ?>
 <!DOCTYPE html>
 
 <html lang="ru">
 
 <head>
-    <title><?$APPLICATION->ShowTitle();?></title>
+    <title><? $APPLICATION->ShowTitle(); ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <?$APPLICATION->ShowHead();?>
+    <? $APPLICATION->ShowHead(); ?>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=SITE_TEMPLATE_PATH?>/favicon-16x16.png">
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/build/main.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= SITE_TEMPLATE_PATH ?>/favicon-16x16.png">
+    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH ?>/build/main.css">
 </head>
 
-<body class="<?$APPLICATION->ShowProperty('body_class');?>">
-<?$APPLICATION->ShowPanel();?>
+<body class="<? $APPLICATION->ShowProperty('body_class'); ?>">
+<? $APPLICATION->ShowPanel(); ?>
 
 <header class="header" role="banner">
     <div class="header__desktop">
@@ -98,11 +99,31 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     </div>
                     <a href="tel:+79872334116" class="header__link">+7 (987) 233-41-16</a>
                 </div>
-                <div class="header__profile">
-                    <div class="header__icon"
-                         style="background-image: url('<?=SITE_TEMPLATE_PATH?>/build/images/user.jpg');"></div>
-                    <a href="/profile" class="header__name">Андрей Александров</a>
+                <?php if (!$USER->IsAuthorized()): ?>
+                <div class="header__auth">
+                    <a href="/auth" class="header__link">Вход</a>
+                    <a href="/registration" class="header__link">Регистрация</a>
                 </div>
+                <?php else: ?>
+                <div class="header__profile">
+                    <div class="profile-dropdown">
+                        <div class="profile-dropdown__avatar"
+                             style="background-image: url('<?=$arUser['PERSONAL_PHOTO'] > 0 ? CFile::GetPath($arUser['PERSONAL_PHOTO']) : SITE_TEMPLATE_PATH . '/img/profile-stand.png'?>');"></div>
+                        <form action="">
+                            <button type="button" class="profile-dropdown__button"><?= $USER->GetFirstName() . ' '  . $USER->GetLastName()?></button>
+                        </form>
+                        <div class="profile-dropdown__list">
+                            <a href="/profile" class="profile-dropdown__link">Настройки</a>
+                            <form action="">
+                                <?= bitrix_sessid_post() ?>
+                                <input type="hidden" name="logout" value="yes"/>
+                                <a href="#" onclick="parentNode.submit()" class="header__link">Выйти</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php endif;?>
+
             </div>
         </div>
         <div class="header__bottom">

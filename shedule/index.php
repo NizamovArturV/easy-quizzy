@@ -14,132 +14,67 @@ $APPLICATION->SetPageProperty('body_class','page-purple');
                     </div>
                 </div>
                 <div class="schedule__cards">
-                    <div class="schedule__card">
-                        <div class="card-game">
-                            <div class="card-game__shell">
-                                <div class="card-game__inner">
-                                    <div class="card-game__content">
-                                        <time class="card-game__date" datetime="20.01.19">20 января, Воскресенье
-                                        </time>
-                                        <p class="card-game__title">Вселенная DC</p>
-                                        <div class="card-game__list">
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">Дорогая, я перезвоню</p>
-                                                <button type="button" class="card-game__location" data-modal="modalMap">
-                                                    Это где?
-                                                </button>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">19:00</p>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">300 <span>₽</span></p>
-                                                <span class="card-game__deny">Мест нет</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-game__line">
-                                        <span class="card-game__type">Pop</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="card-game__button" data-modal="modalReg">Записаться в резерв
-                            </button>
-                        </div>
-                    </div>
-                    <div class="schedule__card">
-                        <div class="card-game card-game--pop">
-                            <div class="card-game__shell">
-                                <div class="card-game__inner">
-                                    <div class="card-game__content">
-                                        <time class="card-game__date" datetime="23.01.19">23 января, Вторник
-                                        </time>
-                                        <p class="card-game__title">EASY QUIZZY #23</p>
-                                        <div class="card-game__list">
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">Дорогая, я перезвоню</p>
-                                                <button type="button" class="card-game__location" data-modal="modalMap">
-                                                    Это где?
-                                                </button>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">19:00</p>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">300 <span>₽</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-game__line">
-                                        <span class="card-game__type">Classic</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="card-game__button">Записаться</button>
-                        </div>
-                    </div>
-                    <div class="schedule__card">
-                        <div class="card-game">
-                            <div class="card-game__shell">
-                                <div class="card-game__inner">
-                                    <div class="card-game__content">
-                                        <time class="card-game__date" datetime="27.01.19">27 января, Суббота
-                                        </time>
-                                        <p class="card-game__title">Easy Quizzy #24</p>
-                                        <div class="card-game__list">
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">Music Hall 27</p>
-                                                <button type="button" class="card-game__location" data-modal="modalMap">
-                                                    Это где?
-                                                </button>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">19:00</p>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">300 <span>₽</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-game__line">
-                                        <span class="card-game__type">Pop</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="card-game__button">Записаться</button>
-                        </div>
-                    </div>
-                    <div class="schedule__card">
-                        <div class="card-game card-game--pop">
-                            <div class="card-game__shell">
-                                <div class="card-game__inner">
-                                    <div class="card-game__content">
-                                        <time class="card-game__date" datetime="30.01.19">30 января, Вторник
-                                        </time>
-                                        <p class="card-game__title">Гарри поттер и орден феникса</p>
-                                        <div class="card-game__list">
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">Дорогая, я перезвоню</p>
-                                                <button type="button" class="card-game__location" data-modal="modalMap">
-                                                    Это где?
-                                                </button>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">19:00</p>
-                                            </div>
-                                            <div class="card-game__item">
-                                                <p class="card-game__caption">300 <span>₽</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-game__line">
-                                        <span class="card-game__type">Classic</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="card-game__button">Записаться</button>
-                        </div>
-                    </div>
+                    <?php
+                        // Фильтруем по дате начала игры
+                        $GLOBALS['gameListFilter'] = ['>=PROPERTY_PROPERTY_DATE' => date("Y-m-d", time())]
+                    ?>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "games-list-full",
+                        Array(
+                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                            "ADD_SECTIONS_CHAIN" => "N",
+                            "AJAX_MODE" => "N",
+                            "AJAX_OPTION_ADDITIONAL" => "",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "AJAX_OPTION_JUMP" => "N",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "CACHE_FILTER" => "N",
+                            "CACHE_GROUPS" => "Y",
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "A",
+                            "CHECK_DATES" => "Y",
+                            "DETAIL_URL" => "",
+                            "DISPLAY_BOTTOM_PAGER" => "Y",
+                            "DISPLAY_DATE" => "Y",
+                            "DISPLAY_NAME" => "Y",
+                            "DISPLAY_PICTURE" => "Y",
+                            "DISPLAY_PREVIEW_TEXT" => "Y",
+                            "DISPLAY_TOP_PAGER" => "N",
+                            "FIELD_CODE" => array(0=>"",1=>"",),
+                            "FILTER_NAME" => "gameListFilter",
+                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                            "IBLOCK_ID" => "2",
+                            "IBLOCK_TYPE" => "index",
+                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                            "INCLUDE_SUBSECTIONS" => "Y",
+                            "MESSAGE_404" => "",
+                            "NEWS_COUNT" => "",
+                            "PAGER_BASE_LINK_ENABLE" => "N",
+                            "PAGER_DESC_NUMBERING" => "N",
+                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                            "PAGER_SHOW_ALL" => "N",
+                            "PAGER_SHOW_ALWAYS" => "N",
+                            "PAGER_TEMPLATE" => ".default",
+                            "PAGER_TITLE" => "Новости",
+                            "PARENT_SECTION" => "",
+                            "PARENT_SECTION_CODE" => "",
+                            "PREVIEW_TRUNCATE_LEN" => "",
+                            "PROPERTY_CODE" => array(0=>"PROPERTY_PLACE_GEOLOCATION",1=>"PROPERTY_DATE",2=>"PROPERTY_IS_FULL",3=>"PROPERTY_PLACE",4=>"PROPERTY_PRICE",5=>"PROPERTY_GAME_TYPE",6=>"PROPERTY_TYPE_PAYMENT",7=>"",),
+                            "SET_BROWSER_TITLE" => "N",
+                            "SET_LAST_MODIFIED" => "N",
+                            "SET_META_DESCRIPTION" => "N",
+                            "SET_META_KEYWORDS" => "N",
+                            "SET_STATUS_404" => "N",
+                            "SET_TITLE" => "N",
+                            "SHOW_404" => "N",
+                            "SORT_BY1" => "ACTIVE_FROM",
+                            "SORT_BY2" => "SORT",
+                            "SORT_ORDER1" => "DESC",
+                            "SORT_ORDER2" => "ASC",
+                            "STRICT_SECTION_CHECK" => "N"
+                        )
+                    );?>
                 </div>
             </div>
         </div>
