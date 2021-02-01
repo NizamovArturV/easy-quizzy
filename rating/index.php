@@ -30,208 +30,63 @@ $APPLICATION->SetPageProperty('body_class','page-purple');
                     </div>
                 </div>
             </div>
-            <div class="rating__block">
-                <div class="rating__container">
-                    <div class="rating__table">
-                        <div class="table-rating">
-                            <div class="table-rating__heading">
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text">Название</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <button type="button" class="table-rating__sort">Игры</button>
-                                </div>
-                                <div class="table-rating__col">
-                                    <button type="button" class="table-rating__sort table-rating__sort--reverse table-rating__sort--active">
-                                        Баллы
-                                    </button>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text">Ранг</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">01</span>
-                                    <p class="table-rating__text">Стиляги</p>
-                                    <span class="table-rating__caption">Знатоки</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">10</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">642</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="3">Знатоки</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">02</span>
-                                    <p class="table-rating__text">Крадущийся тигр, затаившийся дракон</p>
-                                    <span class="table-rating__caption">Знатоки</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">10</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">584</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="3">Знатоки</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">03</span>
-                                    <p class="table-rating__text">Лемонтри</p>
-                                    <span class="table-rating__caption">Знатоки</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">5</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">362</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="3">Знатоки</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">04</span>
-                                    <p class="table-rating__text">Братство крыльца</p>
-                                    <span class="table-rating__caption">Эксперты</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">7</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">281</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="2">Эксперты</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">05</span>
-                                    <p class="table-rating__text">Общество с ограниченными посредственностями</p>
-                                    <span class="table-rating__caption">Эксперты</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">4</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">218</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="2">Эксперты</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">06</span>
-                                    <p class="table-rating__text">Лига несправедливости</p>
-                                    <span class="table-rating__caption">Студенты</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">2</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">109</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="1">Студенты</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">07</span>
-                                    <p class="table-rating__text">Фарго</p>
-                                    <span class="table-rating__caption">Студенты</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">3</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">101</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text" data-rank="1">Студенты</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">07</span>
-                                    <p class="table-rating__text">Эй, Свинтура!</p>
-                                    <span class="table-rating__caption">Новички</span>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">2</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">88</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text">Новички</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">08</span>
-                                    <p class="table-rating__text">Режина Феланджи</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">2</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">76</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text">—</p>
-                                </div>
-                            </div>
-                            <div class="table-rating__row">
-                                <div class="table-rating__col">
-                                    <span class="table-rating__pos">09</span>
-                                    <p class="table-rating__text">Ежики</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Игр</span>
-                                    <p class="table-rating__number">2</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <span class="table-rating__caption">Баллы</span>
-                                    <p class="table-rating__number">51</p>
-                                </div>
-                                <div class="table-rating__col">
-                                    <p class="table-rating__text">—</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "teams-rating1",
+                Array(
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "Y",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => array(0=>"",1=>"",),
+                    "FILTER_NAME" => "",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "5",
+                    "IBLOCK_TYPE" => "index",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => array(0=>"TEAM_NUM",1=>"GAME_PAST",2=>"POINT",3=>"CURRENT_TEAM",4=>"GAME_ID",5=>"",),
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N"
+                )
+            );?>
         </div>
     </div>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
