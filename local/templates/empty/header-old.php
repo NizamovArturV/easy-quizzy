@@ -2,7 +2,7 @@
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
 
-$bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR
+    $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 8]>  <html class="no-js lt-ie9 lt-ie8"><![endif]-->
