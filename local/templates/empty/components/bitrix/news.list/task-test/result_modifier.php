@@ -1,0 +1,1 @@
+<?phpforeach ($arResult['ITEMS'] as $arItem){    $arResult['ALL_REGION'][] = $arItem['PROPERTIES']['REGION']['VALUE'];    $arResult['ALL_TYPES'][] = $arItem['PROPERTIES']['SALE_TYPE']['VALUE'];}$arResult['ALL_REGION'] = array_unique($arResult['ALL_REGION']);$arResult['ALL_TYPES'] = array_unique($arResult['ALL_TYPES']);
