@@ -30,39 +30,22 @@
             zoom: 4
         });
 
-        function showTypeS() {
-            let blocksTypeS = document.querySelectorAll('div[data-types]');
-            for (let i = 0; i < blocksTypeS.length; i++) { // проходим циклом по всем элементам объекта
-                if (blocksTypeS[i].dataset.types != $('#typeS').val()) {
-                    blocksTypeS[i].style.display = "none";
-                } else {
-                    blocksTypeS[i].style.display = "block";
+        //скрываем или показываем карточки скидок
+        function showCards(curReg, curType, curName) {
+            let blocks = document.querySelectorAll('[data-region][data-types][data-nameorg]');
+            for (let i = 0; i < blocks.length; i++) { // проходим циклом по всем элементам объекта
+                if (blocks[i].dataset.region !== curReg && curReg !== null) {
+                    blocks[i].style.display = "none";
+                } else if (blocks[i].dataset.types !== curType && curType !== null) {
+                    blocks[i].style.display = "none";
+                } else if (blocks[i].dataset.nameorg !== curName && curName !== '') {
+                    blocks[i].style.display = "none";
+                }
+                else {
+                    blocks[i].style.display = "block";
                 }
             }
         }
-
-        function showRegion() {
-            let blocksReg = document.querySelectorAll('div[data-region]');
-            for (let i = 0; i < blocksReg.length; i++) { // проходим циклом по всем элементам объекта
-                if (blocksReg[i].dataset.region != $('#region').val()) {
-                    blocksReg[i].style.display = "none";
-                } else {
-                    blocksReg[i].style.display = "block";
-                }
-            }
-        }
-
-        function showNameOrg() {
-            let blocksNameOrg = document.querySelectorAll('div[data-nameorg]');
-            for (let i = 0; i < blocksNameOrg.length; i++) { // проходим циклом по всем элементам объекта
-                if (blocksNameOrg[i].dataset.nameorg != $('#search').val() && $('#search').val() !== '') {
-                    blocksNameOrg[i].style.display = "none";
-                } else {
-                    blocksNameOrg[i].style.display = "block";
-                }
-            }
-        }
-
 
         function checkState() {
             // создаем переменные
@@ -93,38 +76,42 @@
                 case 1:
                     filter_r = myObjects.search('options.region="' + region + '"').add(filter_r);
                     shownObjects = filter_r.addToMap(myMap);
-                    showRegion();
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 10:
                     filter_t = myObjects.search('options.typeS="' + typeS + '"').add(filter_t);
                     shownObjects = filter_t.addToMap(myMap);
-                    showTypeS();
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 11:
                     filter_r = myObjects.search('options.region="' + region + '"').add(filter_r);
                     filter_t = myObjects.search('options.typeS="' + typeS + '"').add(filter_t);
                     shownObjects = filter_r.intersect(filter_t).addToMap(myMap);
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 100:
                     filter_n = myObjects.search('properties.hintContent="' + nameOrg + '"').add(filter_n);
                     shownObjects = filter_n.addToMap(myMap);
-                    showNameOrg();
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 101:
                     filter_n = myObjects.search('properties.hintContent="' + nameOrg + '"').add(filter_n);
                     filter_r = myObjects.search('options.region="' + region + '"').add(filter_r);
                     shownObjects = filter_n.intersect(filter_r).addToMap(myMap);
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 110:
                     filter_n = myObjects.search('properties.hintContent="' + nameOrg + '"').add(filter_n);
                     filter_t = myObjects.search('options.typeS="' + typeS + '"').add(filter_t);
                     shownObjects = filter_n.intersect(filter_t).addToMap(myMap);
+                    showCards(region, typeS, nameOrg);
                     break;
                 case 111:
                     filter_r = myObjects.search('options.region="' + region + '"').add(filter_r);
                     filter_n = myObjects.search('properties.hintContent="' + nameOrg + '"').add(filter_n);
                     filter_t = myObjects.search('options.typeS="' + typeS + '"').add(filter_t);
                     shownObjects = filter_r.intersect(filter_n).intersect(filter_t).addToMap(myMap);
+                    showCards(region, typeS, nameOrg);
                     break;
             }
 
