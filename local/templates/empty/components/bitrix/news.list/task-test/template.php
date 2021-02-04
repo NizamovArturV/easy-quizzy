@@ -34,14 +34,13 @@
         function showCards(curReg, curType, curName) {
             let blocks = document.querySelectorAll('[data-region][data-types][data-nameorg]');
             for (let i = 0; i < blocks.length; i++) { // проходим циклом по всем элементам объекта
-                if (blocks[i].dataset.region !== curReg && curReg !== null) {
+                if (blocks[i].dataset.region !== curReg && curReg !== null && curReg !== '') {
                     blocks[i].style.display = "none";
-                } else if (blocks[i].dataset.types !== curType && curType !== null) {
+                } else if (blocks[i].dataset.types !== curType && curType !== null && curType !== '') {
                     blocks[i].style.display = "none";
                 } else if (blocks[i].dataset.nameorg !== curName && curName !== '') {
                     blocks[i].style.display = "none";
-                }
-                else {
+                } else {
                     blocks[i].style.display = "block";
                 }
             }
@@ -61,10 +60,10 @@
             // проверяем с какими данными мы вообще работаем и в зависимости от этого убераем ненужные метки
             var variant = 0;
 
-            if (region != null) {
+            if (region != null && region !== '') {
                 variant += 1;
             }
-            if (typeS != null) {
+            if (typeS != null && typeS !== '') {
                 variant += 10;
             }
             if (nameOrg !== '') {
@@ -113,6 +112,10 @@
                     shownObjects = filter_r.intersect(filter_n).intersect(filter_t).addToMap(myMap);
                     showCards(region, typeS, nameOrg);
                     break;
+                case 0:
+                    shownObjects = myObjects.addToMap(myMap);
+                    showCards(region, typeS, nameOrg);
+                    break;
             }
 
             // оставляем на карте только найденые метки
@@ -155,6 +158,7 @@
 <div>
     <select id="region">
         <option selected="true" disabled="disabled">Регион:</option>
+        <option value="">Показать все</option>
         <?php
             foreach ($arResult['ALL_REGION'] as $region): ?>
                 <option value="<?= $region ?>"><?= $region ?></option>
@@ -165,6 +169,7 @@
 <div>
     <select id="typeS">
         <option selected="true" disabled="disabled">Тип скидки:</option>
+        <option value="">Показать все</option>
         <?php
             foreach ($arResult['ALL_TYPES'] as $typeS):?>
                 <option value="<?= $typeS ?>"><?= $typeS ?></option>
